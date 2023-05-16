@@ -1,0 +1,52 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,regular,italic,500,500italic,700,700italic,900,900italic);
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+input {
+  @apply focus:outline focus:outline-lightBlack/80;
+}
+.form .form-group input {
+  @apply bg-[#F1F1F1] p-4 md:p-5 py-3 md:py-4 rounded-[10px] border disabled:opacity-60 disabled:cursor-not-allowed border-none  w-full placeholder:!text-sm placeholder:text-[#93989B];
+}
+
+.pretty input:checked ~ .state.p-danger label:after,
+.pretty.p-toggle .state.p-danger label:after {
+  background-color: #9a0007 !important;
+}
+
+.pretty input:checked ~ .state.p-danger-o label:before,
+.pretty.p-toggle .state.p-danger-o label:before {
+  border-color: #9a0007 !important;
+}
+
+.pretty input:checked ~ .state.p-danger-o .icon,
+.pretty input:checked ~ .state.p-danger-o .svg,
+.pretty input:checked ~ .state.p-danger-o svg,
+.pretty.p-toggle .state.p-danger-o .icon,
+.pretty.p-toggle .state.p-danger-o .svg,
+.pretty.p-toggle .state.p-danger-o svg {
+  color: #9a0007 !important;
+  stroke: #9a0007 !important;
+}
+
+.pretty.p-default:not(.p-fill) input:checked ~ .state.p-danger-o label:after {
+  background-color: #9a0007 !important;
+}
+
+.pretty.p-switch input:checked ~ .state.p-danger:before {
+  border-color: #9a0007 !important;
+}
+
+.pretty.p-switch.p-fill input:checked ~ .state.p-danger:before {
+  background-color: #9a0007 !important;
+}
+
+.pretty.p-switch.p-slim input:checked ~ .state.p-danger:before {
+  border-color: #a02622 !important;
+  background-color: #a02622 !important;
+}
