@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
 
 const manifestForP1ugin = {
-  registrationType: 'prompt',
+  registrationType: 'autoUpdate',
   includeAssets: [
     '/favicon.ico',
     '/apple-touch-icon.png',
@@ -46,8 +46,7 @@ const manifestForP1ugin = {
         purpose: 'maskable',
       },
     ],
-    start_url: '/',
-    scope: '',
+
     lang: 'en-US',
     theme_color: '#9A0007',
     background_color: '#FFFFFF',
