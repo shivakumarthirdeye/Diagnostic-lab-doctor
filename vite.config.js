@@ -58,5 +58,9 @@ const manifestForP1ugin = {
 // https://vitejs.dev/config/
 export default defineConfig({
   base: './',
-  plugins: [react(), VitePWA(manifestForP1ugin)],
+  plugins: [
+    react(),
+    // ,
+    //  VitePWA(manifestForP1ugin)
+  ],
 });
