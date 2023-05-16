@@ -46,7 +46,7 @@ const manifestForP1ugin = {
         purpose: 'maskable',
       },
     ],
-
+    start_url: '.',
     lang: 'en-US',
     theme_color: '#9A0007',
     background_color: '#FFFFFF',
