@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Field, useField } from 'formik';
 import ErrorBox from './ErrorBox';
-import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 
 const Input = ({ label, type, placeholder, Icon, ...props }) => {
   const [field, meta, setFn] = useField({ ...props, type });
@@ -31,9 +31,9 @@ const Input = ({ label, type, placeholder, Icon, ...props }) => {
         <div className='absolute right-4 top-[15px]'>
           <button type='button' onClick={() => setShowPassword(prev => !prev)}>
             {!showPassword ? (
-              <AiFillEyeInvisible size={24} className='text-[#93989B]' />
+              <AiOutlineEyeInvisible size={24} className='text-[#93989B]' />
             ) : (
-              <AiFillEye size={24} className='text-[#93989B]' />
+              <AiOutlineEye size={24} className='text-[#93989B]' />
             )}
           </button>
         </div>

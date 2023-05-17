@@ -8,45 +8,58 @@ body {
 }
 
 input {
-  @apply focus:outline focus:outline-lightBlack/80;
+  /* @apply focus:outline focus:outline-lightBlack/80; */
 }
 .form .form-group input {
   @apply bg-[#F1F1F1] p-4 md:p-5 py-3 md:py-4 rounded-[10px] border disabled:opacity-60 disabled:cursor-not-allowed border-none  w-full placeholder:!text-sm placeholder:text-[#93989B];
 }
 
-.pretty input:checked ~ .state.p-danger label:after,
-.pretty.p-toggle .state.p-danger label:after {
-  background-color: #9a0007 !important;
+input[type='checkbox'] {
+  cursor: pointer;
+  /* Add if not using autoprefixer */
+  -webkit-appearance: none;
+  /* Remove most all native input styles */
+  appearance: none;
+  /* For iOS < 15 */
+  background-color: var(--form-background);
+  /* Not removed via appearance */
+  margin: 0;
+
+  font: inherit;
+  color: currentColor;
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.15em solid #2b2b2b;
+  border-radius: 0.15em;
+  transform: translateY(-0.075em);
+
+  display: grid;
+  place-content: center;
 }
 
-.pretty input:checked ~ .state.p-danger-o label:before,
-.pretty.p-toggle .state.p-danger-o label:before {
-  border-color: #9a0007 !important;
+input[type='checkbox']::before {
+  content: '';
+  width: 0.65em;
+  height: 0.65em;
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+  transform: scale(0);
+  transform-origin: bottom left;
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em var(--form-control-color);
+  /* Windows High Contrast Mode */
+  background-color: white;
 }
 
-.pretty input:checked ~ .state.p-danger-o .icon,
-.pretty input:checked ~ .state.p-danger-o .svg,
-.pretty input:checked ~ .state.p-danger-o svg,
-.pretty.p-toggle .state.p-danger-o .icon,
-.pretty.p-toggle .state.p-danger-o .svg,
-.pretty.p-toggle .state.p-danger-o svg {
-  color: #9a0007 !important;
-  stroke: #9a0007 !important;
+input[type='checkbox']:checked::before {
+  transform: scale(1);
+}
+input[type='checkbox']:checked {
+  transform: scale(1);
+  background: #b82c3a;
+  border: 0.15em solid #b82c3a;
 }
 
-.pretty.p-default:not(.p-fill) input:checked ~ .state.p-danger-o label:after {
-  background-color: #9a0007 !important;
-}
-
-.pretty.p-switch input:checked ~ .state.p-danger:before {
-  border-color: #9a0007 !important;
-}
-
-.pretty.p-switch.p-fill input:checked ~ .state.p-danger:before {
-  background-color: #9a0007 !important;
-}
-
-.pretty.p-switch.p-slim input:checked ~ .state.p-danger:before {
-  border-color: #a02622 !important;
-  background-color: #a02622 !important;
-}
+/* input[type='checkbox']:focus {
+  outline: max(2px, 0.15em) solid currentColor;
+  outline-offset: max(2px, 0.15em);
+} */

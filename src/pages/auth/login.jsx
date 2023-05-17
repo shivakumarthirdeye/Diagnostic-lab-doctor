@@ -9,13 +9,15 @@ import SubmitBtn from '../../components/common/Form/SubmitBtn';
 
 const Login = () => {
   const initialValues = {
-    name: '',
+    email: '',
     password: '',
-    stayLoggedIn: '',
+    stayLoggedIn: true,
   };
 
   const validationSchema = Yup.object({
-    name: Yup.string().required('User Name is required'),
+    email: Yup.string()
+      .email('Enter a valid Email')
+      .required('Email is required'),
     password: Yup.string().required('Password is required'),
     stayLoggedIn: Yup.boolean(),
   });
@@ -53,10 +55,10 @@ const Login = () => {
           <Form className='form  max-w-2xl mt-4'>
             <Input
               Icon={FiUser}
-              placeholder='User Name'
-              name='name'
-              id='name'
-              type='text'
+              placeholder='User Email'
+              name='email'
+              id='email'
+              type='email'
             />
             <Input
               Icon={FiLock}
@@ -65,8 +67,9 @@ const Login = () => {
               name='password'
               id='password'
             />
+
             <div className='flex justify-between items-center'>
-              <div className='flex items-center'>
+              <div className='flex items-center space-x-3'>
                 <Checkbox
                   name='stayLoggedIn'
                   id='stayLoggedIn'
