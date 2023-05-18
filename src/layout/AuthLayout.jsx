@@ -7,8 +7,8 @@ const AuthLayout = () => {
   //   return state.auth;
   // });
 
-  let accessToken = '',
-    refreshToken = '';
+  let accessToken = 'test',
+    refreshToken = 'test';
 
   if (accessToken || refreshToken) {
     return <Navigate to='/' replace={true} />;

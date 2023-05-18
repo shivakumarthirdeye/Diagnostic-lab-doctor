@@ -12,7 +12,7 @@ const ForgotPassword = () => {
   };
 
   const validationSchema = Yup.object({
-    otp: Yup.string().required('User Name is required'),
+    otp: Yup.string().required('OTP is required'),
   });
   return (
     <div className='py-20 md:h-screen flex max-w-xl md:max-w-none mx-auto flex-col md:flex-row justify-center md:items-center md:justify-between relative '>
@@ -53,7 +53,7 @@ const ForgotPassword = () => {
             <p className='text-center text-xs md:text-sm '>
               {' '}
               Didn’t received?
-              <button className=' text-primary font-medium'>
+              <button type='button' className=' text-primary font-medium'>
                 &nbsp;Resend OTP
               </button>{' '}
             </p>

@@ -3,11 +3,12 @@ import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 
 const SubmitBtn = ({ text, className, isSubmitting }) => {
   const { dirty, isValid, errors } = useFormikContext();
+
   return (
     <button
       type='submit'
       className={` flex items-center bg-secondary disabled:opacity-60 disabled:cursor-not-allowed text-sm font-medium py-[18px] uppercase my-6 text-center justify-center text-white w-full rounded-md px-6 ${className}`}
-      disabled={!isValid || isSubmitting || !dirty}
+      disabled={!isValid || !!Object.keys(errors).length}
     >
       <>
         {isSubmitting && (

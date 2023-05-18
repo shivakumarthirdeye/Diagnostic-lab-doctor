@@ -42,7 +42,7 @@ const Login = () => {
       </div>
       <div className='md:flex-1'>
         <h1 className='text-2xl md:text-[40px] font-semibold'>Sign In</h1>
-        <p className='text-sm md:text-base mt-2'>
+        <p className='text-sm md:text-base mt-3.5'>
           Please Sign in to enjoy our services.
         </p>
         <Formik

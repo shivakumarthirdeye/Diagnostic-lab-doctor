@@ -31,7 +31,7 @@ const Register = () => {
     ),
   });
   return (
-    <div className='min-h-screen flex max-w-xl md:max-w-none mx-auto flex-col md:flex-row justify-center md:items-center md:justify-between relative  py-10 md:py-5'>
+    <div className='min-h-screen  flex max-w-xl md:max-w-none mx-auto flex-col md:flex-row justify-center md:items-center md:justify-between relative  py-10 md:py-20'>
       <p className='absolute hidden md:block bottom-[20px] mb-2 text-sm left-[50%] translate-x-[-50%]'>
         {' '}
         Powered by <span className='font-medium'> Xyz Pvt. Ltd.</span>

@@ -6,8 +6,8 @@ const PrivateRoute = ({ children, path }) => {
   //   return state.auth;
   // });
 
-  let accessToken = '';
-  let refreshToken = '';
+  let accessToken = 'test';
+  let refreshToken = 'test';
 
   const location = useLocation();
 

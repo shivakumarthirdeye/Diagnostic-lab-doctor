@@ -10,6 +10,7 @@ export default {
         persianBlue: '#2D2DB3',
         inactiveBlack: '#72777A',
         lightBlack: '#2b2b2b',
+        'black-500': '#212121',
       },
     },
   },

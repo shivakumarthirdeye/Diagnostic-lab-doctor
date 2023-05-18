@@ -18,7 +18,7 @@ const Input = ({ label, type, placeholder, Icon, ...props }) => {
         </label>
       )}
       {Icon && (
-        <Icon className='text-xl md:text-[25px] text-[#93989B] absolute left-3 top-4 ' />
+        <Icon className='text-xl md:text-[24px] text-[#93989B] absolute left-2.5 top-4 ' />
       )}
       <input
         {...field}
@@ -31,9 +31,9 @@ const Input = ({ label, type, placeholder, Icon, ...props }) => {
         <div className='absolute right-4 top-[15px]'>
           <button type='button' onClick={() => setShowPassword(prev => !prev)}>
             {!showPassword ? (
-              <AiOutlineEyeInvisible size={24} className='text-[#93989B]' />
+              <AiOutlineEyeInvisible size={22} className='text-[#93989B]' />
             ) : (
-              <AiOutlineEye size={24} className='text-[#93989B]' />
+              <AiOutlineEye size={22} className='text-[#93989B]' />
             )}
           </button>
         </div>

@@ -10,6 +10,12 @@ import { SERVER_URL } from '../utils/config';
 import axios from 'axios';
 import Header from '../components/Header';
 
+// @Lazy import
+const Bookings = lazy(() => import('../pages/bookings'));
+const NewBooking = lazy(() => import('../pages/bookings/new-booking'));
+const Patients = lazy(() => import('../pages/patients'));
+const AllTests = lazy(() => import('../pages/all-tests'));
+
 const DefaultLayout = () => {
   const dispatch = useDispatch();
 
@@ -32,10 +38,13 @@ const DefaultLayout = () => {
   return (
     <>
       <Header />
-      <main className='py-5 px-6 max-w-[1680px] mx-auto'>
+      <main className='py-5  px-6  container '>
         <Suspense fallback={<div className='text-center'>Loading...</div>}>
           <Routes>
-            <Route path='/' element={<>test</>} />
+            <Route path='/' element={<Bookings />} />
+            <Route path='/new-booking' element={<NewBooking />} />
+            <Route path='/patients' element={<Patients />} />
+            <Route path='/all-tests' element={<AllTests />} />
           </Routes>
         </Suspense>
       </main>
