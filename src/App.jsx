@@ -14,7 +14,13 @@ const ResetPassword = lazy(() => import('./pages/auth/reset-password'));
 const App = () => {
   return (
     <>
-      <BrowserRouter>
+      <BrowserRouter
+        getUserConfirmation={(message, callback) => {
+          // this is the default behavior
+          const allowTransition = window.confirm(message);
+          callback(allowTransition);
+        }}
+      >
         <Suspense fallback={<div className='text-center'>Loading...</div>}>
           <Routes>
             {/* /auth */}

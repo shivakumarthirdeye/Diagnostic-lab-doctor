@@ -10,6 +10,8 @@ const CustomSelect = ({
   options,
   disabled,
   isLoading,
+  externalValue,
+  setExternalValue,
   ...props
 }) => {
   const [field, meta] = useField({ ...props, type });
@@ -17,7 +19,7 @@ const CustomSelect = ({
   const { values, setFieldValue, setTouched } = useFormikContext();
 
   return (
-    <div className='form-group mb-5'>
+    <div className='form-group mb-5 w-full'>
       <label className={`${disabled && 'opacity-60'} text-sm block mb-2 text`}>
         {label}
       </label>
@@ -28,6 +30,15 @@ const CustomSelect = ({
         options={options}
         onChange={value => {
           setFieldValue(field.name, value.value);
+
+          if (externalValue) {
+            setExternalValue(externalValue => {
+              return {
+                ...externalValue,
+                [field.name]: value.value,
+              };
+            });
+          }
         }}
         value={
           values[field.name] && {
@@ -50,7 +61,6 @@ const CustomSelect = ({
             color: '#000',
             fontWeight: '500',
             cursor: 'pointer',
-            background: '#F0F0EF',
             opacity: isDisabled && '0.7',
             '&:hover': {
               border: '1px solid rgba(0, 0, 0, 0.3)',
@@ -61,9 +71,15 @@ const CustomSelect = ({
               ...styles,
               fontSize: '15px',
               cursor: 'pointer',
-              background: isSelected && '#294f83',
-              '&:focus': {
-                backgroundColor: 'red',
+              background: isSelected
+                ? '#B82C3A'
+                : isFocused
+                ? '#b82c3a27'
+                : 'none',
+
+              ':active': {
+                background: '#B82C3A',
+                color: '#fff',
               },
             };
           },

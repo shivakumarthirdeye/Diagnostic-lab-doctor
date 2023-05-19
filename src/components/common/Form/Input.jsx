@@ -12,7 +12,9 @@ const Input = ({ label, type, placeholder, Icon, ...props }) => {
     <div className='form-group  mb-5 relative'>
       {label && (
         <label
-          className={`${props.disabled && 'opacity-60'} block mb-1 text-sm`}
+          className={`${
+            props.disabled && 'opacity-60'
+          } text-[#181C32] block mb-1.5 text-sm font-medium   `}
         >
           {label}
         </label>

@@ -65,7 +65,7 @@ const Register = () => {
             console.log(values);
           }}
         >
-          <Form className='form  max-w-2xl mt-4'>
+          <Form className='auth-form   max-w-2xl mt-4'>
             <Input
               placeholder='Your Full Name'
               name='name'

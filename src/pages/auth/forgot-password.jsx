@@ -46,7 +46,7 @@ const ForgotPassword = () => {
             console.log(values);
           }}
         >
-          <Form className='form  max-w-2xl mt-4'>
+          <Form className='auth-form   max-w-2xl mt-4'>
             <Input placeholder='Enter OTP' name='otp' id='otp' type='text' />
 
             <SubmitBtn text='Verify' className='bg-primary' />

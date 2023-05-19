@@ -11,6 +11,7 @@ export default {
         inactiveBlack: '#72777A',
         lightBlack: '#2b2b2b',
         'black-500': '#212121',
+        green: '#60BB47',
       },
     },
   },
