@@ -6,6 +6,7 @@ import Investigation from '../../components/NewBooking/Investigation';
 import useExitPrompt from '../../hooks/useExitPrompt';
 import { usePrompt } from '../../hooks/usePrompt';
 import disableBrowserBackButton from 'disable-browser-back-navigation';
+import Payment from '../../components/NewBooking/Payment';
 
 const steps = [
   { id: 1, name: 'Patient Information' },
@@ -33,6 +34,20 @@ const NewBooking = () => {
   useEffect(() => {
     if (showMessage) disableBrowserBackButton();
   }, [showMessage]);
+
+  function checkObjectValues(obj) {
+    for (let key in obj) {
+      if (!obj.hasOwnProperty(key)) {
+        continue;
+      }
+
+      if (!obj[key]) {
+        return false;
+      }
+    }
+
+    return true;
+  }
 
   return (
     <div>
@@ -87,7 +102,18 @@ const NewBooking = () => {
           />
         )}
         {currentStep === 2 && (
+          //  patientValues &&
           <Investigation
+            currentStep={currentStep}
+            setCurrentStep={setCurrentStep}
+            testInfoValues={testInfoValues}
+            setTestInfoValues={setTestInfoValues}
+          />
+        )}
+        {currentStep === 3 && (
+          // patientValues &&
+          // checkObjectValues(testInfoValues) &&
+          <Payment
             currentStep={currentStep}
             setCurrentStep={setCurrentStep}
             testInfoValues={testInfoValues}

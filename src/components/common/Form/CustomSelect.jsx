@@ -31,14 +31,14 @@ const CustomSelect = ({
         onChange={value => {
           setFieldValue(field.name, value.value);
 
-          if (externalValue) {
-            setExternalValue(externalValue => {
-              return {
-                ...externalValue,
-                [field.name]: value.value,
-              };
-            });
-          }
+          // if (externalValue) {
+          //   setExternalValue(externalValue => {
+          //     return {
+          //       ...externalValue,
+          //       [field.name]: value.value,
+          //     };
+          //   });
+          // }
         }}
         value={
           values[field.name] && {

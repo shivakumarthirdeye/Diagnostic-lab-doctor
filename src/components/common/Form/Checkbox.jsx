@@ -4,11 +4,6 @@ import { BsCheck } from 'react-icons/bs';
 
 const Checkbox = ({ label, ...props }) => {
   const [field, meta, setFn] = useField({ ...props });
-  console.log(
-    '🚀 ~ file: Checkbox.jsx:7 ~ Checkbox ~ field, meta:',
-    field,
-    meta
-  );
 
   return (
     <div>
