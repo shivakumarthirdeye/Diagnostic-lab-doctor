@@ -181,14 +181,14 @@ const Investigation = ({
                   onClick={() => {
                     setCurrentStep(1);
                   }}
-                  className='py-3 px-8 bg-[#C9C9C9] text-white rounded  font-semibold'
+                  className='py-3 text-sm lg:text-base px-8 bg-[#C9C9C9] text-white rounded  font-semibold'
                 >
                   Previous
                 </button>
                 <SubmitBtn
                   isSubmitting={!values.tests.length}
                   text='Proceed'
-                  className='!py-3.5 !px-8 bg-primary max-w-[110px] rounded text-white font-semibold'
+                  className='!py-3 text-sm lg:text-base !px-8 bg-primary max-w-[110px] rounded text-white font-semibold'
                 />
               </div>
             </Form>

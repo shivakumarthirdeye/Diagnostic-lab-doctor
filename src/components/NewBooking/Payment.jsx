@@ -29,9 +29,11 @@ const Payment = ({
   return (
     <div>
       <div className='flex flex-col items-center justify-center max-w-lg mx-auto'>
-        <div className='border border-[#F8F8F8] mb-5 rounded-md px-5 py-3.5 w-full'>
-          <h1 className='font-medium'>Sample Pick up time</h1>
-          <p className='text-sm text-[#2B2B2B] pt-1.5'>
+        <div className='border border-[#F8F8F8] mb-5 rounded-md p-2.5 xs:px-5 py-3.5 w-full'>
+          <h1 className='text-sm xs:text-base font-medium'>
+            Sample Pick up time
+          </h1>
+          <p className='text-xs xs:text-sm text-[#2B2B2B] pt-1.5'>
             {format(
               new Date(testInfoValues?.pickupTime),
               'do MMM yyyy, h:mm aa'
@@ -40,29 +42,31 @@ const Payment = ({
           </p>
         </div>
         <div className='border border-[#F8F8F8] rounded-md mb-5  pt-3.5 w-full'>
-          <div className='border-b border-[#F8F8F8] px-5'>
+          <div className=' text-sm xs:text-base border-b border-[#F8F8F8] p-2.5 xs:px-5'>
             <div className='flex justify-between items-center pb-2.5'>
               <h1>Diagnostic Center</h1>
               <p className='font-medium'>Health at Home</p>
             </div>
-            {testInfoValues?.tests.map(test => {
-              const { id, name, price } = test;
-              return (
-                <div
-                  key={id}
-                  className='flex justify-between items-center pb-2.5'
-                >
-                  <h1>{name}</h1>
-                  <p className='font-medium text-green'>INR. {price}</p>
-                </div>
-              );
-            })}
+            <div className='text-sm xs:text-base'>
+              {testInfoValues?.tests.map(test => {
+                const { id, name, price } = test;
+                return (
+                  <div
+                    key={id}
+                    className='flex justify-between items-center pb-2.5'
+                  >
+                    <h1>{name}</h1>
+                    <p className='font-medium text-green'>INR. {price}</p>
+                  </div>
+                );
+              })}
+            </div>
             <div className='flex justify-between items-center pb-2.5'>
               <h1>Discount</h1>
               <p className='font-medium text-green'>INR. 100</p>
             </div>
           </div>
-          <div className='flex justify-between items-center py-2.5 px-5'>
+          <div className='flex text-sm xs:text-base justify-between items-center py-2.5 p-2.5 xs:px-5'>
             <h1>Total Amount</h1>
             <p className='font-medium text-primary'>
               INR.{' '}
@@ -74,7 +78,7 @@ const Payment = ({
         </div>
 
         <div className='w-full '>
-          <h1 className='font-medium '>Payment Method</h1>
+          <h1 className='font-medium  text-sm xs:text-base '>Payment Method</h1>
           <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
@@ -110,9 +114,9 @@ const Payment = ({
                     onClick={e => {
                       setFieldValue('paymentMethod', 'online');
                     }}
-                    className='border flex items-center justify-between border-[#F8F8F8] rounded-md mb-5  px-5 py-3.5 w-full'
+                    className='border flex items-center justify-between border-[#F8F8F8] rounded-md mb-5  p-2.5 xs:px-5 py-3.5 w-full'
                   >
-                    <div className='flex items-center space-x-3'>
+                    <div className='flex items-center text-sm xs:text-base   space-x-3'>
                       <div className='w-8 h-8 rounded bg-[#E7FFE0]'></div>
                       <h2>Online</h2>
                     </div>
@@ -132,9 +136,9 @@ const Payment = ({
                       //   paymentMethod: 'cash',
                       // });
                     }}
-                    className='border flex items-center justify-between border-[#F8F8F8] rounded-md mb-5  px-5 py-3.5 w-full'
+                    className='border flex items-center  justify-between border-[#F8F8F8] rounded-md mb-5  p-2.5 xs:px-5 py-3.5 w-full'
                   >
-                    <div className='flex items-center space-x-3'>
+                    <div className='flex items-center text-sm xs:text-base  space-x-3'>
                       <div className='w-8 h-8 rounded bg-[#FDF4F4] flex items-center justify-center'>
                         <svg
                           width='19'
@@ -171,13 +175,13 @@ const Payment = ({
                       onClick={() => {
                         setCurrentStep(2);
                       }}
-                      className='py-3 px-8 bg-[#C9C9C9] text-white rounded  font-semibold'
+                      className='py-3 text-sm lg:text-base   px-8 bg-[#C9C9C9] text-white rounded  font-semibold'
                     >
                       Previous
                     </button>
                     <SubmitBtn
                       text='Submit'
-                      className='!py-3.5 !px-8 bg-primary max-w-[110px] rounded text-white font-semibold'
+                      className='!py-3 text-sm lg:text-base   !px-8 bg-primary max-w-[110px] rounded text-white font-semibold'
                     />
                     {/* <button
               type='submit'

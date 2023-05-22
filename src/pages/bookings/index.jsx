@@ -20,6 +20,7 @@ const Bookings = () => {
           </Link>
         </div>
       </div>
+      {/* No Info */}
       <div className='py-60 flex flex-col items-center justify-center'>
         <Link
           to='/new-booking'
@@ -34,6 +35,7 @@ const Bookings = () => {
           <p className='text-[#B5B5C3] mt-1'>Book for a sample test now!</p>
         </div>
       </div>
+      {/* EF No Info */}
     </div>
   );
 };

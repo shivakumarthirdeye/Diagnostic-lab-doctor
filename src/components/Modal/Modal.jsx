@@ -55,17 +55,12 @@ const Modal = ({ modalType, modalProps }) => {
       }}
     >
       <div
-        className='absolute z-10 top-[20%]'
+        className='absolute z-10 md:top-[20%]'
         // ref={ref}
       >
         {/* <div className="absolute top-16" ref={ref}> */}
         {/* <div className='w-auto modal' ref={ref}> */}
-        <div
-          className='relative z-10 modal'
-          style={{
-            minWidth: '400px',
-          }}
-        >
+        <div className='relative z-10 modal w-screen sm:w-auto sm:min-w-[400px]'>
           {/* <button
             type='button'
             onClick={handleClose}
@@ -78,7 +73,7 @@ const Modal = ({ modalType, modalProps }) => {
             <Component {...{ ...modalProps }} handleClose={handleClose} />
           )}
         </div>
-        <div className='empty-space pb-14'></div>
+        <div className='empty-space sm:pb-14'></div>
       </div>
     </div>
   );

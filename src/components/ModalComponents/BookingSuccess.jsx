@@ -12,7 +12,7 @@ const BookingSuccess = ({
     testInfoValues
   );
   return (
-    <div className='p-5 py-6 bg-white w-[520px] rounded-xl '>
+    <div className='p-5 py-6 bg-white sm:w-[520px] rounded-xl '>
       <div className='flex justify-center'>
         <svg
           width='101'
@@ -93,7 +93,12 @@ const BookingSuccess = ({
           </div>
           <div className='flex justify-between items-center text-sm mb-4'>
             <h2>Total Amount paid</h2>
-            <h1 className='text-primary font-semibold'>INR. 1900</h1>
+            <h1 className='text-primary font-semibold'>
+              INR.{' '}
+              {testInfoValues?.tests?.reduce((accumulator, currentValue) => {
+                return (accumulator = accumulator + currentValue.price);
+              }, -100)}
+            </h1>
           </div>
         </div>
         <div className='mt-4'>

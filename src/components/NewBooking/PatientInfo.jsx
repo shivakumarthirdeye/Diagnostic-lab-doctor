@@ -4,6 +4,7 @@ import Input from '../common/Form/Input';
 import CustomSelect from '../common/Form/CustomSelect';
 import { Link } from 'react-router-dom';
 import SubmitBtn from '../common/Form/SubmitBtn';
+import 'yup-phone-lite';
 
 const PatientInfo = ({
   currentStep,
@@ -30,7 +31,7 @@ const PatientInfo = ({
     patientId: Yup.string(),
     age: Yup.string().required('Age is required'),
     gender: Yup.string().required('Gender is required'),
-    mobileNumber: Yup.string(),
+    mobileNumber: Yup.string().phone('IN', 'Please enter a valid phone number'),
     email: Yup.string().email('Enter valid email address'),
     address: Yup.string(),
     city: Yup.string(),
@@ -129,13 +130,13 @@ const PatientInfo = ({
           <div className='my-10 flex items-center justify-center space-x-4'>
             <Link
               to='/'
-              className='py-3 px-8 bg-[#C9C9C9] text-white rounded  font-semibold'
+              className='py-3 text-sm lg:text-base px-8 bg-[#C9C9C9] text-white rounded  font-semibold'
             >
               Cancel
             </Link>
             <SubmitBtn
               text='Proceed'
-              className='!py-3.5 !px-8 bg-primary max-w-[110px] rounded text-white font-semibold'
+              className='!py-3  text-sm lg:text-base !px-8 bg-primary max-w-[110px] rounded text-white font-semibold'
             />
             {/* <button
               type='submit'
