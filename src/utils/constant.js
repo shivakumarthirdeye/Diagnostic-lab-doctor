@@ -6,8 +6,7 @@ export const WARNING = 'WARNING';
 export const DEFAULT = 'DEFAULT';
 
 // MODALS
-export const DELETE_MODAL = 'DELETE_MODAL';
-export const LOGOUT_MODAL = 'LOGOUT_MODAL';
+export const BOOKING_SUCCESS_MODAL = 'BOOKING_SUCCESS_MODAL';
 
 export const entriesOption = [
   { id: 1, value: '10' },

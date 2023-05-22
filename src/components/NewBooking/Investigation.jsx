@@ -81,14 +81,14 @@ const Investigation = ({
                     ]}
                   />
                 </div>
-                <div className='flex-1'></div>
+                <div className='hidden md:block flex-1'></div>
               </div>
               <div>
                 <SelectTest
                   testInfoValues={testInfoValues}
                   setTestInfoValues={setTestInfoValues}
                 />
-                <div className='grid grid-cols-2 gap-5 '>
+                <div className='grid md:grid-cols-2 gap-5 '>
                   {testInfoValues?.tests?.map(test => {
                     const { name, id, shortName, price } = test;
                     return (
@@ -147,7 +147,7 @@ const Investigation = ({
                   </h1>
                 </div>
               </div>
-              <div className='flex w-full  space-x-10'>
+              <div className='flex flex-col md:flex-row w-full  md:space-x-10'>
                 <div className='flex-1'>
                   <CustomSelect
                     label='Sample*'
@@ -285,7 +285,7 @@ function SelectTest({ testInfoValues, setTestInfoValues }) {
               leaveFrom='opacity-100 translate-y-0'
               leaveTo='opacity-0 translate-y-1'
             >
-              <Popover.Panel className='absolute left-1/2 z-10 mt-3 w-screen max-w-4xl -translate-x-1/2 transform  sm:px-0 lg:max-w-4xl bg-white px-10 rounded-lg shadow-lg ring-1 ring-black ring-opacity-5'>
+              <Popover.Panel className='absolute left-1/2 z-10 mt-3 w-[80vw] max-w-4xl -translate-x-1/2 transform  sm:px-0 lg:max-w-4xl bg-white px-10 rounded-lg shadow-lg ring-1 ring-black ring-opacity-5'>
                 {props => {
                   const { open, close } = props;
 
@@ -365,13 +365,13 @@ function SelectTest({ testInfoValues, setTestInfoValues }) {
                                         fill='none'
                                         xmlns='http://www.w3.org/2000/svg'
                                       >
-                                        <g clip-path='url(#clip0_883_7878)'>
+                                        <g clipPath='url(#clip0_883_7878)'>
                                           <path
                                             d='M6.94873 11.9486L10.2406 15.055L16.8244 8.39844'
                                             stroke='#27AE60'
-                                            stroke-width='2.88241'
-                                            stroke-linecap='round'
-                                            stroke-linejoin='round'
+                                            strokeWidth='2.88241'
+                                            strokeLinecap='round'
+                                            strokeLinejoin='round'
                                           />
                                         </g>
                                         <rect
@@ -381,7 +381,7 @@ function SelectTest({ testInfoValues, setTestInfoValues }) {
                                           height='21.146'
                                           rx='3.84321'
                                           stroke='#27AE60'
-                                          stroke-width='0.854047'
+                                          strokeWidth='0.854047'
                                         />
                                         <defs>
                                           <clipPath id='clip0_883_7878'>

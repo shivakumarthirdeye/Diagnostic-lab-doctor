@@ -1,18 +1,24 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import SubmitBtn from '../common/Form/SubmitBtn';
 import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import RadioCheckbox from '../common/Form/RadioCheckbox';
 import ErrorBox from '../common/Form/ErrorBox';
 import { format } from 'date-fns';
+import { BOOKING_SUCCESS_MODAL } from '../../utils/constant';
+import { showModal } from '../../redux/features/modalSlice';
+import { useDispatch } from 'react-redux';
 
 const Payment = ({
   currentStep,
   setCurrentStep,
   patientValues,
   testInfoValues,
+  setShowConfirmMessage,
 }) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const initialValues = {
     paymentMethod: '',
   };
@@ -73,7 +79,23 @@ const Payment = ({
             initialValues={initialValues}
             validationSchema={validationSchema}
             onSubmit={values => {
-              console.log('🚀 ~ file: Payment.jsx:157 ~ values:', values);
+              setShowConfirmMessage(false);
+              dispatch(
+                showModal({
+                  modalType: BOOKING_SUCCESS_MODAL,
+                  modalProps: {
+                    testInfoValues: {
+                      ...testInfoValues,
+                      pickupTime: new Date(
+                        testInfoValues.pickupTime
+                      ).toISOString(),
+                    },
+                    patientValues,
+                    paymentInfo: values,
+                    onClose: '/',
+                  },
+                })
+              );
 
               // setPatientValues(values);
               // setCurrentStep(2);
@@ -83,7 +105,13 @@ const Payment = ({
               const { values, setFieldValue, touched, errors } = formik;
               return (
                 <Form className='form my-10'>
-                  <div className='border flex items-center justify-between border-[#F8F8F8] rounded-md mb-5  px-5 py-3.5 w-full'>
+                  <button
+                    type='button'
+                    onClick={e => {
+                      setFieldValue('paymentMethod', 'online');
+                    }}
+                    className='border flex items-center justify-between border-[#F8F8F8] rounded-md mb-5  px-5 py-3.5 w-full'
+                  >
                     <div className='flex items-center space-x-3'>
                       <div className='w-8 h-8 rounded bg-[#E7FFE0]'></div>
                       <h2>Online</h2>
@@ -94,8 +122,18 @@ const Payment = ({
                       id='paymentMethod'
                       value='online'
                     />
-                  </div>
-                  <div className='border flex items-center justify-between border-[#F8F8F8] rounded-md mb-5  px-5 py-3.5 w-full'>
+                  </button>
+                  <button
+                    type='button'
+                    onClick={e => {
+                      setFieldValue('paymentMethod', 'cash');
+
+                      // setFieldValue({
+                      //   paymentMethod: 'cash',
+                      // });
+                    }}
+                    className='border flex items-center justify-between border-[#F8F8F8] rounded-md mb-5  px-5 py-3.5 w-full'
+                  >
                     <div className='flex items-center space-x-3'>
                       <div className='w-8 h-8 rounded bg-[#FDF4F4] flex items-center justify-center'>
                         <svg
@@ -122,7 +160,7 @@ const Payment = ({
                       id='paymentMethod'
                       value='cash'
                     />
-                  </div>
+                  </button>
 
                   {touched.paymentMethod && errors.paymentMethod && (
                     <ErrorBox msg={errors.paymentMethod} />

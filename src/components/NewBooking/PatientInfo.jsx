@@ -38,7 +38,7 @@ const PatientInfo = ({
   });
 
   return (
-    <div className='px-8'>
+    <div className='xl:px-8'>
       {/* <Prompt when={true} message='Are you sure you want to leave?' /> */}
       <h1 className='text-xl font-medium'>Basic information</h1>
       <Formik
@@ -50,7 +50,7 @@ const PatientInfo = ({
         }}
       >
         <Form className='form my-10'>
-          <div className='grid grid-cols-3 gap-12 gap-y-5'>
+          <div className='md:grid  grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-8 xl:gap-12 gap-y-5'>
             <Input
               label='Patient First Name*'
               name='firstName'
@@ -102,7 +102,7 @@ const PatientInfo = ({
               id='email'
               placeholder='Enter email address'
             />
-            <br />
+            <br className='hidden md:block' />
             <div className='col-span-2'>
               <Input
                 label='Address'

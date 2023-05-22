@@ -9,6 +9,7 @@ import { SERVER_URL } from '../utils/config';
 // import Modal from '../components/Modal/Modal';
 import axios from 'axios';
 import Header from '../components/Header';
+import Modal from '../components/Modal/Modal';
 
 // @Lazy import
 const Bookings = lazy(() => import('../pages/bookings'));
@@ -34,11 +35,11 @@ const DefaultLayout = () => {
   //   }
   // );
 
-  // const modal = useSelector(state => state.modal);
+  const modal = useSelector(state => state.modal);
   return (
     <>
       <Header />
-      <main className='py-5  px-6  container '>
+      <main className='py-5  px-2 lg:px-5 xl:px-6  container '>
         <Suspense fallback={<div className='text-center'>Loading...</div>}>
           <Routes>
             <Route path='/' element={<Bookings />} />
@@ -48,7 +49,7 @@ const DefaultLayout = () => {
           </Routes>
         </Suspense>
       </main>
-      {/* {modal.modalType !== null && <Modal {...modal} />} */}
+      {modal.modalType !== null && <Modal {...modal} />}
     </>
   );
 };

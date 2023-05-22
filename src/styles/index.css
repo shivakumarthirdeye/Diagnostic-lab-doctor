@@ -87,7 +87,7 @@ input[type='number'] {
 }
 
 .mainContainer {
-  @apply bg-white p-7  rounded-xl;
+  @apply bg-white  p-4 md:p-5 lg:p-6 xl:p-7  rounded-xl;
 }
 
 input[type='radio'] + label span {

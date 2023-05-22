@@ -118,6 +118,8 @@ const NewBooking = () => {
             setCurrentStep={setCurrentStep}
             testInfoValues={testInfoValues}
             setTestInfoValues={setTestInfoValues}
+            patientValues={patientValues}
+            setShowConfirmMessage={setShowMessage}
           />
         )}
       </div>

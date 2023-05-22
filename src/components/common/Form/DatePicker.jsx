@@ -18,10 +18,10 @@ const DatePicker = ({
   const [field, meta, setField] = useField({ ...props, type });
 
   return (
-    <div>
+    <div className='w-full'>
       <label className='block mb-1 text-sm'>{label}</label>
 
-      <div className='relative mb-4'>
+      <div className='relative w-full mb-4'>
         <ReactDatePicker
           showTimeSelect={showTime}
           {...field}
