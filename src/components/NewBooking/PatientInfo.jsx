@@ -41,7 +41,7 @@ const PatientInfo = ({
   return (
     <div className='xl:px-8'>
       {/* <Prompt when={true} message='Are you sure you want to leave?' /> */}
-      <h1 className='text-xl font-medium'>Basic information</h1>
+      <h1 className='text-xl font-medium hidden xs:block'>Basic information</h1>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { FaTimes } from 'react-icons/fa';
+import HeaderMobile from './HeaderMobile';
 
 const navLinks = [
   {
@@ -42,6 +43,7 @@ const Header = () => {
   }, [showSidebar]);
   return (
     <>
+      {pathname === '/' && <HeaderMobile />}
       <header className='bg-primary hidden xs:block   py-2 md:pt-5 md:py-0'>
         <nav className='container text-white font-semibold  flex justify-between items-center space-x-8 '>
           <div className='flex items-center space-x-16'>
@@ -103,7 +105,7 @@ const Header = () => {
       <aside
         className={`${
           showSidebar ? 'translate-x-0' : 'translate-x-[100%]'
-        } fixed  right-0  transition-all top-0 z-20  max-w-sm w-full bg-white shadow-2xl h-screen`}
+        } fixed  right-0 hidden xs:block  transition-all top-0 z-20  max-w-sm w-full bg-white shadow-2xl h-screen`}
       >
         <button
           className='absolute top-5 right-5'

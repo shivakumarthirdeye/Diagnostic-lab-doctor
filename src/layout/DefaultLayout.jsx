@@ -1,5 +1,5 @@
 import React, { lazy, Suspense } from 'react';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 // import Header from '../components/Header/Header';
 // import Sidebar from '../components/Sidebar/Sidebar';
 import { useQuery } from 'react-query';
@@ -39,7 +39,7 @@ const DefaultLayout = () => {
   return (
     <>
       <Header />
-      <main className='py-5  px-2 lg:px-5 xl:px-6  container '>
+      <main className='py-2 xs:py-5 lg:px-5 xl:px-6  container '>
         <Suspense fallback={<div className='text-center'>Loading...</div>}>
           <Routes>
             <Route path='/' element={<Bookings />} />

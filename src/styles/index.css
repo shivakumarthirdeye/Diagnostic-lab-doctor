@@ -9,13 +9,13 @@ body {
 }
 
 input {
-  /* @apply focus:outline focus:outline-lightBlack/80; */
+  @apply focus:!outline-none xs:focus:outline focus:outline-lightBlack/80;
 }
 .auth-form .form-group input {
   @apply bg-[#F1F1F1] p-4 md:p-5 py-3 md:py-3.5 rounded-[10px] border disabled:opacity-60 disabled:cursor-not-allowed border-none  w-full placeholder:!text-sm placeholder:text-[#93989B];
 }
 .form .form-group input {
-  @apply border border-[#C9C9C9] p-4 md:p-5 py-3 md:py-3.5 rounded-md  disabled:opacity-60 disabled:cursor-not-allowed  w-full placeholder:!text-sm placeholder:text-[#93989B];
+  @apply bg-[#F1F1F1] text-sm xs:text-base xs:bg-transparent xs:border border-[#C9C9C9] p-4 md:p-5 py-3 md:py-3.5 rounded-md  disabled:opacity-60 disabled:cursor-not-allowed  w-full placeholder:!text-sm placeholder:text-[#93989B];
 }
 
 input[type='checkbox'] {
@@ -83,7 +83,7 @@ input[type='number'] {
 .container {
   width: 100%;
   max-width: clamp(0px, 95vw, 1355px) !important;
-  @apply mx-auto;
+  @apply mx-auto px-1.5;
 }
 
 .mainContainer {

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const BreadCrumb = ({ paths, currentPage }) => {
   return (
-    <div className='flex py-3 pb-5 items-center '>
+    <div className=' hidden xs:flex py-3 pb-5 items-center '>
       {paths.map((path, i) => {
         return (
           <div key={i} className='text-[#B5B5C3] text-sm '>
