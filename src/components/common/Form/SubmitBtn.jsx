@@ -3,6 +3,7 @@ import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 
 const SubmitBtn = ({ text, className, isSubmitting }) => {
   const { dirty, isValid, errors } = useFormikContext();
+  console.log('🚀 ~ file: SubmitBtn.jsx:6 ~ SubmitBtn ~ errors:', errors);
 
   return (
     <button

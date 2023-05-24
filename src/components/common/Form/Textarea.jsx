@@ -3,13 +3,13 @@ import { Field, useField } from 'formik';
 import ErrorBox from './ErrorBox';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 
-const Input = ({ label, type, placeholder, Icon, ...props }) => {
+const Textarea = ({ label, type, placeholder, Icon, ...props }) => {
   const [field, meta, setFn] = useField({ ...props, type });
 
   const [showPassword, setShowPassword] = useState(false);
 
   return (
-    <div className='form-group  mb-6 xs:mb-5 relative'>
+    <div className='form-group  mb-5 relative'>
       {label && (
         <label
           className={`${
@@ -22,7 +22,7 @@ const Input = ({ label, type, placeholder, Icon, ...props }) => {
       {Icon && (
         <Icon className='text-xl md:text-[24px] text-[#93989B] absolute left-2.5 top-4 ' />
       )}
-      <input
+      <textarea
         {...field}
         {...props}
         type={showPassword && type === 'password' ? 'text' : type}
@@ -45,4 +45,4 @@ const Input = ({ label, type, placeholder, Icon, ...props }) => {
   );
 };
 
-export default Input;
+export default Textarea;

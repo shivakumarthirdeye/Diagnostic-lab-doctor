@@ -14,6 +14,9 @@ import Modal from '../components/Modal/Modal';
 // @Lazy import
 const Bookings = lazy(() => import('../pages/bookings'));
 const NewBooking = lazy(() => import('../pages/bookings/new-booking'));
+const SelectTest = lazy(() =>
+  import('../pages/bookings/new-booking/select-test')
+);
 const Patients = lazy(() => import('../pages/patients'));
 const AllTests = lazy(() => import('../pages/all-tests'));
 
@@ -39,11 +42,12 @@ const DefaultLayout = () => {
   return (
     <>
       <Header />
-      <main className='py-2 xs:py-5 lg:px-5 xl:px-6  container '>
+      <main className='py-3.5 xs:py-5 lg:px-5 xl:px-6  container '>
         <Suspense fallback={<div className='text-center'>Loading...</div>}>
           <Routes>
             <Route path='/' element={<Bookings />} />
             <Route path='/new-booking' element={<NewBooking />} />
+            <Route path='/new-booking/select-test' element={<SelectTest />} />
             <Route path='/patients' element={<Patients />} />
             <Route path='/all-tests' element={<AllTests />} />
           </Routes>

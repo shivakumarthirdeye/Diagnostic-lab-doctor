@@ -3,9 +3,10 @@ import { useDispatch } from 'react-redux';
 import { FaTimes } from 'react-icons/fa';
 import useClose from '../../hooks/useClose';
 import { hideModal } from '../../redux/features/modalSlice';
-import { BOOKING_SUCCESS_MODAL } from '../../utils/constant';
+import { ADD_TEST_MODAL, BOOKING_SUCCESS_MODAL } from '../../utils/constant';
 import BookingSuccess from '../ModalComponents/BookingSuccess';
 import { useNavigate } from 'react-router-dom';
+import AddTestMobileModal from '../ModalComponents/AddTestMobileModal';
 
 const Modal = ({ modalType, modalProps }) => {
   const dispatch = useDispatch();
@@ -30,6 +31,10 @@ const Modal = ({ modalType, modalProps }) => {
   switch (modalType) {
     case BOOKING_SUCCESS_MODAL: {
       Component = BookingSuccess;
+      break;
+    }
+    case ADD_TEST_MODAL: {
+      Component = AddTestMobileModal;
       break;
     }
 

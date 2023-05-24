@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import BreadCrumb from '../../components/common/BreadCrumb';
+import BreadCrumb from '../../../components/common/BreadCrumb';
 import { Link, useNavigate } from 'react-router-dom';
-import PatientInfo from '../../components/NewBooking/PatientInfo';
-import Investigation from '../../components/NewBooking/Investigation';
-import useExitPrompt from '../../hooks/useExitPrompt';
-import { usePrompt } from '../../hooks/usePrompt';
+import PatientInfo from '../../../components/NewBooking/PatientInfo';
+import Investigation from '../../../components/NewBooking/Investigation';
+import useExitPrompt from '../../../hooks/useExitPrompt';
+import { usePrompt } from '../../../hooks/usePrompt';
 import disableBrowserBackButton from 'disable-browser-back-navigation';
-import Payment from '../../components/NewBooking/Payment';
+import Payment from '../../../components/NewBooking/Payment';
 import { HiArrowNarrowLeft, HiOutlineArrowSmLeft } from 'react-icons/hi';
 import { current } from '@reduxjs/toolkit';
 
@@ -21,6 +21,7 @@ const NewBooking = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [showMessage, setShowMessage] = useExitPrompt(false);
   const [patientValues, setPatientValues] = useState(null);
+
   const [testInfoValues, setTestInfoValues] = useState({
     reportCategory: '',
     sample: '',

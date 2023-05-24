@@ -27,7 +27,7 @@ const Payment = ({
     paymentMethod: Yup.string().required('Payment Method is required'),
   });
   return (
-    <div>
+    <div className='py-5'>
       <div className='flex flex-col items-center justify-center max-w-lg mx-auto'>
         <div className='border border-[#F8F8F8] mb-5 rounded-md p-2.5 xs:px-5 py-3.5 w-full'>
           <h1 className='text-sm xs:text-base font-medium'>

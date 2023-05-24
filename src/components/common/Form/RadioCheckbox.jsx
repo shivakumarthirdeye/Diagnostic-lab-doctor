@@ -19,13 +19,13 @@ const RadioCheckbox = ({ label, ...props }) => {
         checked={field.value === props.value}
         {...props}
         type='radio'
-        className='opacity-0 absolute z-10 w-7 h-7 xs:w-8 xs:h-8 cursor-pointer'
+        className='opacity-0 absolute z-10 w-5 h-5 xs:w-8 xs:h-8 cursor-pointer'
       />
       <label
         htmlFor={props.id}
-        className='flex items-center cursor-pointer text-xl'
+        className='flex items-center  cursor-pointer text-smw xs:text-base lg:text-xl'
       >
-        <span className='w-6 h-6 xs:w-7 xs:h-7 inline-block mr-2 rounded-full border border-grey flex-no-shrink'></span>
+        <span className='w-[18px] h-[18px] xs:w-7 xs:h-7 inline-block mr-2 rounded-full border border-grey flex-no-shrink'></span>
         {label && label}
       </label>
     </div>

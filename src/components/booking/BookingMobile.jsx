@@ -58,6 +58,28 @@ const BookingMobile = () => {
           </Link>
         </div>
       </div>
+      <div className='flex my-10 justify-between items-center'>
+        <div>
+          <h1 className='text-lg font-medium text-black-500 '>
+            Today’s Bookings
+          </h1>
+          <p className='text-[#B5B5C3] mt-1'>No bookings yet!</p>
+        </div>
+      </div>
+      <div className='py-20 w-full flex flex-col items-center justify-center'>
+        <Link
+          to='/new-booking'
+          className='bg-primary py-2.5 text-sm px-4 rounded-[10px] text-white font-semibold'
+        >
+          Book Sample Test
+        </Link>
+        <div className='text-center mt-3'>
+          <h1 className='text-lg  font-medium text-black-500 '>
+            No Bookings Yet
+          </h1>
+          <p className='text-[#B5B5C3] mt-1'>Book for a sample test now!</p>
+        </div>
+      </div>
     </div>
   );
 };

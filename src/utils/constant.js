@@ -7,6 +7,7 @@ export const DEFAULT = 'DEFAULT';
 
 // MODALS
 export const BOOKING_SUCCESS_MODAL = 'BOOKING_SUCCESS_MODAL';
+export const ADD_TEST_MODAL = 'ADD_TEST_MODAL';
 
 export const entriesOption = [
   { id: 1, value: '10' },

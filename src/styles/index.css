@@ -7,6 +7,11 @@ body {
   font-family: 'Roboto', sans-serif;
   background: #fafafa;
 }
+@media screen and (max-width: 450px) {
+  body {
+    background: #fff;
+  }
+}
 
 input {
   @apply focus:!outline-none xs:focus:outline focus:outline-lightBlack/80;
@@ -16,6 +21,9 @@ input {
 }
 .form .form-group input {
   @apply bg-[#F1F1F1] text-sm xs:text-base xs:bg-transparent xs:border border-[#C9C9C9] p-4 md:p-5 py-3 md:py-3.5 rounded-md  disabled:opacity-60 disabled:cursor-not-allowed  w-full placeholder:!text-sm placeholder:text-[#93989B];
+}
+.form .form-group textarea {
+  @apply bg-[#F1F1F1] text-sm xs:text-base xs:bg-transparent xs:border border-[#C9C9C9] p-4 md:p-5 py-3 md:py-3.5 rounded-md  disabled:opacity-60 disabled:cursor-not-allowed  w-full placeholder:!text-sm placeholder:text-[#93989B] h-[150px] resize-none;
 }
 
 input[type='checkbox'] {
@@ -87,7 +95,7 @@ input[type='number'] {
 }
 
 .mainContainer {
-  @apply bg-white  p-3 md:p-5 lg:p-6 xl:p-7  rounded-xl;
+  @apply bg-white  xs:p-3 md:p-5 lg:p-6 xl:p-7  rounded-xl;
 }
 
 input[type='radio'] + label span {
@@ -97,6 +105,13 @@ input[type='radio'] + label span {
 input[type='radio']:checked + label span {
   background-color: #9a0007;
   box-shadow: 0px 0px 0px 4px white inset;
+}
+
+@media screen and (max-width: 450px) {
+  input[type='radio']:checked + label span {
+    background-color: #9a0007;
+    box-shadow: 0px 0px 0px 3px white inset;
+  }
 }
 
 input[type='radio']:checked + label {
