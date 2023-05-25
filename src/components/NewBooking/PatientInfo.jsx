@@ -68,7 +68,7 @@ const PatientInfo = ({
         }}
       >
         {formik => {
-          const { touched, errors } = formik;
+          const { values, touched, errors } = formik;
 
           return (
             <Form className='form my-10'>

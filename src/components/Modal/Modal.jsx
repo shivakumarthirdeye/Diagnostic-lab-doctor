@@ -54,13 +54,13 @@ const Modal = ({ modalType, modalProps }) => {
 
   return (
     <div
-      className='fixed top-0 bottom-0 left-0 right-0 z-50 flex items-center justify-center w-full h-full overflow-y-auto  xs:max-h-[100vh] bg-black backdrop bg-opacity-60'
+      className='fixed top-0 bottom-0 left-0 right-0 z-50 flex items-center justify-center w-full h-full overflow-y-auto  max-h-[100vh] bg-black backdrop bg-opacity-60'
       // style={{
       //   maxHeight: '100vh',
       // }}
     >
       <div
-        className='absolute z-10 h-full md:top-[20%]'
+        className='absolute z-10  md:top-[20%]'
         // ref={ref}
       >
         {/* <div className="absolute top-16" ref={ref}> */}
@@ -78,7 +78,7 @@ const Modal = ({ modalType, modalProps }) => {
             <Component {...{ ...modalProps }} handleClose={handleClose} />
           )}
         </div>
-        <div className='empty-space sm:pb-14'></div>
+        <div className='empty-space sm:pb-5'></div>
       </div>
     </div>
   );
