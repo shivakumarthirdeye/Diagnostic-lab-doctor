@@ -1,16 +1,14 @@
 import { Form, Formik } from 'formik';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { HiOutlineArrowSmLeft, HiSearch } from 'react-icons/hi';
 import * as Yup from 'yup';
 import CustomSelect from '../common/Form/CustomSelect';
 import { useDispatch, useSelector } from 'react-redux';
 import { addTest, removeTest } from '../../redux/features/newBooking';
+import { useMediaQuery } from 'react-responsive';
+import SubmitBtn from '../common/Form/SubmitBtn';
 
 const AddTestMobileModal = ({ handleClose, testsArray }) => {
-  console.log(
-    '🚀 ~ file: AddTestMobileModal.jsx:8 ~ AddTestMobileModal ~ testsArray:',
-    testsArray
-  );
   const initialValues = {
     reportCategory: '',
     tests: '',
@@ -34,8 +32,17 @@ const AddTestMobileModal = ({ handleClose, testsArray }) => {
   const dispatch = useDispatch();
   const { tests } = useSelector(state => state.newBooking);
 
+  const isMobile = useMediaQuery({
+    query: '(max-width: 450px)',
+  });
+  useEffect(() => {
+    if (!isMobile) {
+      handleClose();
+    }
+  }, [isMobile]);
+
   return (
-    <div className='bg-white h-screen py-4 px-4'>
+    <div className='bg-white min-h-[100dvh] py-4 px-4'>
       {' '}
       <div className='flex justify-between xs:hidden'>
         <div className='flex space-x-3'>
@@ -167,6 +174,16 @@ const AddTestMobileModal = ({ handleClose, testsArray }) => {
                   );
                 })}
             </div>
+          </div>
+          <div className='fixed bottom-5  max-w-[90vw]  w-full  left-[50%] translate-x-[-50%] '>
+            <button
+              type='button'
+              onClick={handleClose}
+              // isSubmitting={!values.tests.length}
+              className='!py-4 w-full text-sm lg:text-base !px-8 bg-primary xs:max-w-[110px] rounded text-white font-semibold'
+            >
+              Proceed
+            </button>
           </div>
         </Form>
       </Formik>

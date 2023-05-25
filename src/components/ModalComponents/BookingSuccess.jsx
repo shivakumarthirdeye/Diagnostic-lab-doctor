@@ -12,7 +12,7 @@ const BookingSuccess = ({
     testInfoValues
   );
   return (
-    <div className='p-5 py-6 bg-white sm:w-[520px] rounded-xl '>
+    <div className='min-h-screen py-10 xs:h-auto p-5 xs:py-6 bg-white sm:w-[520px] rounded-xl '>
       <div className='flex justify-center'>
         <svg
           width='101'

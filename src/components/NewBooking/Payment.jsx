@@ -9,6 +9,7 @@ import { format } from 'date-fns';
 import { BOOKING_SUCCESS_MODAL } from '../../utils/constant';
 import { showModal } from '../../redux/features/modalSlice';
 import { useDispatch } from 'react-redux';
+import { clearTest } from '../../redux/features/newBooking';
 
 const Payment = ({
   currentStep,
@@ -84,6 +85,7 @@ const Payment = ({
             validationSchema={validationSchema}
             onSubmit={values => {
               setShowConfirmMessage(false);
+              dispatch(clearTest());
               dispatch(
                 showModal({
                   modalType: BOOKING_SUCCESS_MODAL,

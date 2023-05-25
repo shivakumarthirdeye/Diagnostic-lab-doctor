@@ -19,11 +19,14 @@ const newBooking = createSlice({
 
       state.tests = state.tests.filter(test => test.id !== testId);
     },
+    clearTest: (state, action) => {
+      state.tests = [];
+    },
   },
 });
 
 // action creators
-export const { addTest, removeTest } = newBooking.actions;
+export const { addTest, removeTest, clearTest } = newBooking.actions;
 
 // reducer
 export default newBooking.reducer;

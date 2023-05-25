@@ -54,18 +54,18 @@ const Modal = ({ modalType, modalProps }) => {
 
   return (
     <div
-      className='fixed top-0 bottom-0 left-0 right-0 z-50 flex items-center justify-center w-full h-full overflow-y-auto bg-black backdrop bg-opacity-60'
-      style={{
-        maxHeight: '100vh',
-      }}
+      className='fixed top-0 bottom-0 left-0 right-0 z-50 flex items-center justify-center w-full h-full overflow-y-auto  xs:max-h-[100vh] bg-black backdrop bg-opacity-60'
+      // style={{
+      //   maxHeight: '100vh',
+      // }}
     >
       <div
-        className='absolute z-10 md:top-[20%]'
+        className='absolute z-10 h-full md:top-[20%]'
         // ref={ref}
       >
         {/* <div className="absolute top-16" ref={ref}> */}
         {/* <div className='w-auto modal' ref={ref}> */}
-        <div className='relative z-10 modal w-screen sm:w-auto sm:min-w-[400px]'>
+        <div className='relative  z-10 modal w-screen sm:w-auto sm:min-w-[400px]'>
           {/* <button
             type='button'
             onClick={handleClose}
