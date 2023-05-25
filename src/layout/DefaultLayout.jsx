@@ -14,9 +14,7 @@ import Modal from '../components/Modal/Modal';
 // @Lazy import
 const Bookings = lazy(() => import('../pages/bookings'));
 const NewBooking = lazy(() => import('../pages/bookings/new-booking'));
-const SelectTest = lazy(() =>
-  import('../pages/bookings/new-booking/select-test')
-);
+
 const Patients = lazy(() => import('../pages/patients'));
 const AllTests = lazy(() => import('../pages/all-tests'));
 
@@ -47,7 +45,6 @@ const DefaultLayout = () => {
           <Routes>
             <Route path='/' element={<Bookings />} />
             <Route path='/new-booking' element={<NewBooking />} />
-            <Route path='/new-booking/select-test' element={<SelectTest />} />
             <Route path='/patients' element={<Patients />} />
             <Route path='/all-tests' element={<AllTests />} />
           </Routes>

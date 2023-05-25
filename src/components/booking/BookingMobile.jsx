@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const BookingMobile = () => {
   return (
-    <div className='block xs:hidden'>
+    <div className='block xs:hidden overflow-x-hidden'>
       <div className='relative bg-[#8F3E97] py-6 px-8 rounded-lg'>
         <div>
           <svg

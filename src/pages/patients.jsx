@@ -3,16 +3,31 @@ import React, { useState } from 'react';
 import { AiOutlineUndo } from 'react-icons/ai';
 import { FaUndo } from 'react-icons/fa';
 import { GrFilter, GrSearch } from 'react-icons/gr';
-import { HiOutlineFilter } from 'react-icons/hi';
+import { HiOutlineArrowSmLeft, HiOutlineFilter } from 'react-icons/hi';
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md';
-import { BottomSheet } from 'react-spring-bottom-sheet';
+import { useNavigate } from 'react-router-dom/dist';
 
 const Patients = () => {
+  const navigate = useNavigate();
   const [openFilter, setOpenFilter] = useState(false);
 
   return (
-    <div className='mainContainer mt-12'>
-      <div className='flex justify-between items-center'>
+    <div className='mainContainer xs:mt-12'>
+      <div className='flex justify-between py-3 xs:hidden'>
+        <div className='flex space-x-3'>
+          <button
+            type='button'
+            onClick={() => {
+              navigate(-1);
+            }}
+          >
+            <HiOutlineArrowSmLeft className='text-3xl' />
+          </button>
+          <h1 className='text-2xl font-medium  '>Lab Patients</h1>
+        </div>
+      </div>
+
+      <div className=' justify-between hidden xs:flex items-center'>
         <div>
           <h1 className='text-lg font-medium text-black-500 '>All Patients</h1>
           <p className='text-[#B5B5C3] mt-2'>No Patients Yet!</p>

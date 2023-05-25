@@ -43,7 +43,9 @@ const Header = () => {
   }, [showSidebar]);
   return (
     <>
-      {pathname === '/' && <HeaderMobile />}
+      {pathname === '/' && (
+        <HeaderMobile navLinks={navLinks} pathname={pathname} />
+      )}
       <header className='bg-primary hidden xs:block   py-2 md:pt-5 md:py-0'>
         <nav className='container text-white font-semibold  flex justify-between items-center space-x-8 '>
           <div className='flex items-center space-x-16'>
