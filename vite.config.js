@@ -49,7 +49,7 @@ const manifestForP1ugin = {
     start_url: '.',
     lang: 'en-US',
     theme_color: '#9A0007',
-    background_color: '#FFFFFF',
+    background_color: '#9A0007',
     display: 'standalone',
     orientation: 'portrait',
   },
@@ -58,7 +58,11 @@ const manifestForP1ugin = {
 // https://vitejs.dev/config/
 export default defineConfig({
   // base: './',
-  plugins: [react(), splitVendorChunkPlugin(), , VitePWA(manifestForP1ugin)],
+  plugins: [
+    react(),
+    splitVendorChunkPlugin(),
+    //  VitePWA(manifestForP1ugin)
+  ],
   build: {
     // chunkSizeWarningLimit: 1500,
     rollupOptions: {
