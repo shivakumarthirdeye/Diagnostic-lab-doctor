@@ -1,11 +1,15 @@
-import React from 'react';
+import { Transition } from '@headlessui/react';
+import React, { useState } from 'react';
 import { AiOutlineUndo } from 'react-icons/ai';
 import { FaUndo } from 'react-icons/fa';
 import { GrFilter, GrSearch } from 'react-icons/gr';
 import { HiOutlineFilter } from 'react-icons/hi';
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md';
+import { BottomSheet } from 'react-spring-bottom-sheet';
 
 const Patients = () => {
+  const [openFilter, setOpenFilter] = useState(false);
+
   return (
     <div className='mainContainer mt-12'>
       <div className='flex justify-between items-center'>
@@ -16,17 +20,42 @@ const Patients = () => {
       </div>
       {/* Filter */}
       <div className='my-8'>
-        <div className='flex space-x-6 items-center'>
+        <div className='flex space-x-6 justify-between md:justify-normal  items-center'>
           <div className='max-w-[280px] w-full relative'>
             <input
               type='text'
+              placeholder='Search for patients'
               className='bg-[#F1F1F1] border-none focus:border-none focus:outline-none p-4 max-w-[280px] rounded-[10px] w-full pr-10 '
             />
             <div className='absolute right-4  text-xl top-[18px] text-[#F1F1F1]'>
               <GrSearch className='searchSvg' />
             </div>
           </div>
-          <div className='bg-[#273142] flex items-center    rounded-[10px] '>
+          <div className='block md:hidden'>
+            <button
+              onClick={() => {
+                setOpenFilter(prev => !prev);
+              }}
+              className='bg-[#497BEA] p-3 rounded-full'
+            >
+              <svg
+                width={26}
+                height={26}
+                viewBox='0 0 26 26'
+                fill='none'
+                xmlns='http://www.w3.org/2000/svg'
+              >
+                <path
+                  d='M22.479 5.41667H19.229M14.8957 3.25V7.58333M14.8957 5.41667H2.979M7.31234 13H2.979M11.6457 10.8333V15.1667M23.5623 13H11.6457M22.479 20.5833H19.229M14.8957 18.4167V22.75M14.8957 20.5833H2.979'
+                  stroke='white'
+                  strokeWidth={1.5}
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                />
+              </svg>
+            </button>
+          </div>
+          <div className='hidden md:flex bg-[#273142]  items-center    rounded-[10px] '>
             <button className='text-white  p-5  border-r border-white '>
               <HiOutlineFilter className='text-white' />
             </button>
@@ -76,6 +105,29 @@ const Patients = () => {
           </p>
         </div>
       </div>
+
+      {openFilter && (
+        <div
+          onClick={() => {
+            setOpenFilter(prev => !prev);
+          }}
+          className='fixed top-0 left-0 right-0 bottom-0 bg-black/50  z-10'
+        ></div>
+      )}
+
+      <Transition
+        show={openFilter}
+        enter='transition ease-in-out duration-300 transform'
+        enterFrom='translate-y-full'
+        enterTo='translate-y-0'
+        leave='transition ease-in-out duration-300 transform'
+        leaveFrom='translate-y-0'
+        leaveTo='translate-y-full'
+        className='fixed bottom-0 h-[375px] z-20 bg-white p-5 w-full left-0 right-0'
+      >
+        Filter
+      </Transition>
+
       {/* EF No Info */}
     </div>
   );

@@ -112,7 +112,7 @@ const Register = () => {
             <div>
               <SubmitBtn text='Register' className='bg-primary' />
               <p className='text-center text-xs md:text-sm '>
-                Already Have an account?
+                Already Have an account?&nbsp;
                 <Link className=' text-primary font-medium' to='/auth/login'>
                   Signin
                 </Link>{' '}
