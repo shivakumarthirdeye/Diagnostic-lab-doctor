@@ -31,6 +31,14 @@ const CustomSelect = ({
       <Select
         options={options}
         {...props}
+        value={
+          values[field.name] && {
+            label:
+              values[field.name].charAt(0).toUpperCase() +
+              values[field.name].slice(1),
+            value: values[field.name],
+          }
+        }
         onChange={onChange}
         onBlur={setTouched}
         placeholder={placeholder}
@@ -68,6 +76,7 @@ const CustomSelect = ({
               },
             };
           },
+
           placeholder: style => ({
             ...style,
             fontSize: '14px',
