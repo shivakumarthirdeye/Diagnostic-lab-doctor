@@ -19,6 +19,7 @@ const CustomSelect = ({
     ...props,
     type,
   });
+  const { values } = useFormikContext();
   const onChange = ({ value }) => {
     setValue(value);
   };
