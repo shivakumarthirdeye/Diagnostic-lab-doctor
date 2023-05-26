@@ -3,6 +3,9 @@ import { Link, useLocation } from 'react-router-dom';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { FaTimes } from 'react-icons/fa';
 import HeaderMobile from './HeaderMobile';
+import { Transition } from '@headlessui/react';
+import { MdLogout } from 'react-icons/md';
+import Sidebar from './Sidebar';
 
 const navLinks = [
   {
@@ -44,7 +47,12 @@ const Header = () => {
   return (
     <>
       {pathname === '/' && (
-        <HeaderMobile navLinks={navLinks} pathname={pathname} />
+        <HeaderMobile
+          navLinks={navLinks}
+          pathname={pathname}
+          showSidebar={showSidebar}
+          setShowSidebar={setShowSidebar}
+        />
       )}
       <header className='bg-primary hidden xs:block   py-2 md:pt-5 md:py-0'>
         <nav className='container text-white font-semibold  flex justify-between items-center space-x-8 '>
@@ -104,42 +112,11 @@ const Header = () => {
           {' '}
         </div>
       )}
-      <aside
-        className={`${
-          showSidebar ? 'translate-x-0' : 'translate-x-[100%]'
-        } fixed  right-0 hidden xs:block  transition-all top-0 z-20  max-w-sm w-full bg-white shadow-2xl h-screen`}
-      >
-        <button
-          className='absolute top-5 right-5'
-          onClick={() => {
-            setShowSidebar(prev => !prev);
-          }}
-        >
-          <FaTimes className='text-3xl' />
-        </button>
-        <ul className=' items-center flex  my-20 flex-col lg:space-x-6 xl:space-x-8  '>
-          {navLinks.map(link => {
-            const { href, id, name, links } = link;
-            return (
-              <li
-                onClick={() => {
-                  setShowSidebar(prev => !prev);
-                }}
-                className={` w-full p-4 px-6 overflow-hidden ${
-                  pathname === href ||
-                  links?.includes(pathname) ||
-                  links?.includes(`/${pathname.split('/')[1]}`)
-                    ? 'bg-primary text-white'
-                    : 'text-black'
-                }`}
-                key={id}
-              >
-                <Link to={href}>{name}</Link>
-              </li>
-            );
-          })}
-        </ul>
-      </aside>
+      <Sidebar
+        navLinks={navLinks}
+        showSidebar={showSidebar}
+        setShowSidebar={setShowSidebar}
+      />
     </>
   );
 };
