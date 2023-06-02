@@ -9,6 +9,8 @@ import { HiOutlineArrowSmLeft, HiOutlineFilter } from 'react-icons/hi';
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md';
 import { useMediaQuery } from 'react-responsive';
 import { useNavigate } from 'react-router-dom/dist';
+import { SERVER_URL } from '../utils/config';
+import axios from 'axios';
 
 const Patients = () => {
   const navigate = useNavigate();
@@ -22,6 +24,8 @@ const Patients = () => {
 
   useEffect(() => {
     if (!isLap) setOpenFilter(false);
+
+    axios.post(`${SERVER_URL}/register-web-patience`);
   }, [isLap]);
 
   return (

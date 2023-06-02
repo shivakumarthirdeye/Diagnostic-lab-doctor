@@ -2,10 +2,9 @@ import jwtDecode from 'jwt-decode';
 
 export const checkTokens = () => {
   try {
-    const refreshToken = localStorage.getItem('refreshToken');
     const accessToken = localStorage.getItem('accessToken');
 
-    if (!refreshToken && !accessToken) {
+    if (!accessToken) {
       return false;
     }
 
@@ -92,11 +91,12 @@ export const getTokens = () => {
   if (checkTokens()) {
     return {
       accessToken: localStorage.getItem('accessToken'),
-      refreshToken: localStorage.getItem('refreshToken'),
     };
   }
 
   removeTokens();
+  removeUser();
+
   return {
     accessToken: null,
     refreshToken: null,
@@ -105,7 +105,6 @@ export const getTokens = () => {
 
 export const saveTokens = (accessToken, refreshToken) => {
   localStorage.setItem('accessToken', accessToken);
-  localStorage.setItem('refreshToken', refreshToken);
 };
 
 // fn to save new access token
@@ -116,20 +115,22 @@ export const saveAccessTokens = accessToken => {
 // fn to remove tokens
 export const removeTokens = () => {
   localStorage.removeItem('accessToken');
-  localStorage.removeItem('refreshToken');
-  localStorage.removeItem('refreshToken');
 };
 
 export const saveUser = user => {
-  localStorage.setItem('SVT_USER', JSON.stringify(user));
+  localStorage.setItem('LAB_DOCTOR', JSON.stringify(user));
+};
+export const removeUser = user => {
+  localStorage.removeItem('LAB_DOCTOR');
 };
 
 export const getUser = () => {
   if (checkTokens()) {
-    return JSON.parse(localStorage.getItem('SVT_USER'));
+    return JSON.parse(localStorage.getItem('LAB_DOCTOR'));
   }
 
   removeTokens();
+  removeUser();
   return {
     user: null,
   };

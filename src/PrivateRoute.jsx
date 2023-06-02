@@ -2,16 +2,13 @@ import { Navigate, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 const PrivateRoute = ({ children, path }) => {
-  // const { accessToken, refreshToken } = useSelector(state => {
-  //   return state.auth;
-  // });
-
-  let accessToken = 'test';
-  let refreshToken = 'test';
+  const { accessToken } = useSelector(state => {
+    return state.auth;
+  });
 
   const location = useLocation();
 
-  if (!accessToken && !refreshToken) {
+  if (!accessToken) {
     return <Navigate replace to='/auth/login' state={{ from: location }} />;
   }
 

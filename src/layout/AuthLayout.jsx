@@ -3,14 +3,11 @@ import { useSelector } from 'react-redux';
 import { Navigate, Outlet } from 'react-router-dom';
 
 const AuthLayout = () => {
-  // const { accessToken, refreshToken } = useSelector(state => {
-  //   return state.auth;
-  // });
+  const { accessToken } = useSelector(state => {
+    return state.auth;
+  });
 
-  let accessToken = 'test',
-    refreshToken = 'test';
-
-  if (accessToken || refreshToken) {
+  if (accessToken) {
     return <Navigate to='/' replace={true} />;
   }
   return (

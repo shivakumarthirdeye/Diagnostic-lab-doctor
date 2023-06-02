@@ -10,7 +10,6 @@ import {
 
 const initialState = {
   accessToken: getTokens().accessToken,
-  refreshToken: getTokens().refreshToken,
   user: getUser(),
 };
 
@@ -19,38 +18,21 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     loginUser: (state, action) => {
-      const { accessToken, refreshToken } = action.payload;
+      const { accessToken } = action.payload;
 
       state.accessToken = accessToken;
-      state.refreshToken = refreshToken;
 
-      saveTokens(accessToken, refreshToken);
+      saveTokens(accessToken);
     },
     logoutUser: state => {
       removeTokens();
 
-      // state.accessToken = null;
-      // state.refreshToken = null;
-      // state.user = null;
       window.location.reload();
     },
-    setAccessToken: (state, action) => {
-      const accessToken = action.payload;
-      state.accessToken = accessToken;
 
-      saveAccessTokens(accessToken);
-    },
     setCurrentUser: (state, action) => {
       state.user = action.payload;
       saveUser(action.payload);
-    },
-    setEmailVerified: (state, action) => {
-      if (state.user) {
-        state.user = {
-          ...state.user,
-          emailVerified: action.payload,
-        };
-      }
     },
   },
 });

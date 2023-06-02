@@ -6,6 +6,9 @@ import HeaderMobile from './HeaderMobile';
 import { Transition } from '@headlessui/react';
 import { MdLogout } from 'react-icons/md';
 import Sidebar from './Sidebar';
+import { useDispatch, useSelector } from 'react-redux';
+import useClose from '../../hooks/useClose';
+import { logoutUser } from '../../redux/features/authSlice';
 
 const navLinks = [
   {
@@ -28,8 +31,11 @@ const navLinks = [
 
 const Header = () => {
   const { pathname } = useLocation();
+  const dispatch = useDispatch();
+  const { user } = useSelector(state => state.auth);
 
   const [showSidebar, setShowSidebar] = useState(false);
+  const [showLogout, setShowLogout] = useState(false);
 
   useEffect(() => {
     if (showSidebar) {
@@ -44,6 +50,11 @@ const Header = () => {
       document.body.style.overflowY = 'auto';
     };
   }, [showSidebar]);
+
+  const ref = useClose(() => setShowLogout(false));
+  const logout = () => {
+    dispatch(logoutUser());
+  };
   return (
     <>
       {pathname === '/' && (
@@ -82,13 +93,28 @@ const Header = () => {
               })}
             </ul>
           </div>
-          <div className='hidden md:block'>
-            <div className=' flex items-center space-x-4 pb-1.5'>
-              <h2 className=''>Marvin McKinney</h2>
-              <div className='h-10 w-10  text-xl font-medium bg-white/[0.08] rounded-md flex items-center justify-center'>
-                M
+          <div ref={ref} className='hidden md:block relative'>
+            <button
+              onClick={() => {
+                setShowLogout(prev => !prev);
+              }}
+              className=' flex items-center space-x-4 pb-1.5'
+            >
+              <h2 className=''>{user.fullName}</h2>
+              <div className='h-10 w-10  text-xl font-medium bg-white/[0.08] rounded-md flex items-center justify-center uppercase'>
+                {user.fullName[0]}
               </div>
-            </div>
+            </button>
+            {showLogout && (
+              <div className='absolute right-0 shadow-xl bottom-[-50px] '>
+                <button
+                  onClick={logout}
+                  className='bg-primary rounded-lg text-white p-2.5 px-10'
+                >
+                  Logout
+                </button>
+              </div>
+            )}
           </div>
           <div className='block md:hidden'>
             <button
@@ -113,9 +139,11 @@ const Header = () => {
         </div>
       )}
       <Sidebar
+        user={user}
         navLinks={navLinks}
         showSidebar={showSidebar}
         setShowSidebar={setShowSidebar}
+        logout={logout}
       />
     </>
   );

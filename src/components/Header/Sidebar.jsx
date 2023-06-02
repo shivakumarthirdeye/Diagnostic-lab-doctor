@@ -4,7 +4,7 @@ import { MdLogout } from 'react-icons/md';
 import { useMediaQuery } from 'react-responsive';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-const Sidebar = ({ navLinks, showSidebar, setShowSidebar }) => {
+const Sidebar = ({ user, navLinks, showSidebar, setShowSidebar, logout }) => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const isMobile = useMediaQuery({
@@ -66,9 +66,9 @@ const Sidebar = ({ navLinks, showSidebar, setShowSidebar }) => {
           <div className='my-4 mt-7 flex justify-between items-center'>
             <div className=' flex items-center space-x-4 pb-1.5'>
               <div className='h-10 w-10  text-xl font-medium bg-white/[0.08] rounded-md flex items-center justify-center'>
-                M
+                {user.fullName[0]}
               </div>
-              <h2 className=''>Marvin McKinney</h2>
+              <h2 className=''>{user.fullName}</h2>
             </div>
             <div>
               <svg
@@ -124,12 +124,7 @@ const Sidebar = ({ navLinks, showSidebar, setShowSidebar }) => {
           </ul>
         </div>
         <div className='px-8 fixed bottom-10  '>
-          <button
-            onClick={() => {
-              setShowSidebar(prev => !prev);
-            }}
-            className='flex items-center space-x-4 '
-          >
+          <button onClick={logout} className='flex items-center space-x-4 '>
             <span className='h-9 w-9 bg-white rounded flex items-center justify-center'>
               <MdLogout className='text-primary text-xl' />
             </span>
