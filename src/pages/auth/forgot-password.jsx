@@ -28,7 +28,7 @@ const ForgotPassword = () => {
             {' '}
           </span>{' '}
           <span className=' text-lg md:text-5xl xl:text-6xl inline md:block font-medium text-primary'>
-            PathoPlus teste
+            PathoPlus
           </span>
         </h2>
       </div>
