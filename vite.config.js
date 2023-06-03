@@ -58,7 +58,14 @@ const manifestForP1ugin = {
 // https://vitejs.dev/config/
 export default defineConfig({
   // base: './',
-  plugins: [react(), splitVendorChunkPlugin(), VitePWA(manifestForP1ugin)],
+  plugins: [
+    react(),
+    splitVendorChunkPlugin(),
+    VitePWA({
+      manifest: manifestForP1ugin,
+      registerType: 'autoUpdate',
+    }),
+  ],
   build: {
     // chunkSizeWarningLimit: 1500,
     rollupOptions: {
