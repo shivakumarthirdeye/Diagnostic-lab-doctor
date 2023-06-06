@@ -2,8 +2,7 @@ import React, { lazy, Suspense } from 'react';
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 // import Header from '../components/Header/Header';
 // import Sidebar from '../components/Sidebar/Sidebar';
-import { useQuery } from 'react-query';
-import { logoutUser, setCurrentUser } from '../redux/features/authSlice';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { SERVER_URL } from '../utils/config';
 // import Modal from '../components/Modal/Modal';

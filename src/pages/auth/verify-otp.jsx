@@ -1,23 +1,9 @@
 import { Formik, Form } from 'formik';
 import Input from '../../components/common/Form/Input';
 import * as Yup from 'yup';
-import { FiLock, FiUser } from 'react-icons/fi';
-import Checkbox from '../../components/common/Form/Checkbox';
 import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import SubmitBtn from '../../components/common/Form/SubmitBtn';
-import axios from 'axios';
-import { SERVER_URL } from '../../utils/config';
-import { ERROR, SUCCESS } from '../../utils/constant';
-import { handleError } from '../../utils/helper';
-import { addToast } from '../../redux/features/toastSlice';
 import { useDispatch } from 'react-redux';
-import { useMutation } from 'react-query';
-
-const verifyOTP = async data => {
-  console.log('🚀 ~ file: verify-otp.jsx:16 ~ verifyOTP ~ data:', data);
-  const res = await axios.post(`${SERVER_URL}/verify-web-doctorotp`, data);
-  return res;
-};
 
 const VerifyOtp = () => {
   const { state } = useLocation();
@@ -34,37 +20,6 @@ const VerifyOtp = () => {
   if (!state) {
     return <Navigate replace to='/auth/login' />;
   }
-
-  const { mutate, data, isError, isLoading, error } = useMutation({
-    mutationFn: verifyOTP,
-    onSuccess: success => {
-      dispatch(
-        addToast({
-          kind: SUCCESS,
-          msg: success.data.message,
-        })
-      );
-      navigate('/auth/login', {
-        state: success.data,
-      });
-
-      dispatch(
-        addToast({
-          kind: SUCCESS,
-          msg: 'Please Login',
-        })
-      );
-    },
-    onError: error => {
-      const errorMsg = handleError(error);
-      dispatch(
-        addToast({
-          kind: ERROR,
-          msg: errorMsg,
-        })
-      );
-    },
-  });
 
   return (
     <div className='py-20 md:h-screen flex max-w-xl md:max-w-none mx-auto flex-col md:flex-row justify-center md:items-center md:justify-between relative '>
@@ -93,8 +48,10 @@ const VerifyOtp = () => {
           initialValues={initialValues}
           validationSchema={validationSchema}
           onSubmit={values => {
-            // console.log({ ...state.doctor, values });
-            mutate({ ...state, values });
+            console.log(
+              '🚀 ~ file: verify-otp.jsx:58 ~ VerifyOtp ~ values:',
+              values
+            );
           }}
         >
           <Form className='auth-form   max-w-2xl mt-4'>

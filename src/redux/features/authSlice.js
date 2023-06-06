@@ -26,7 +26,6 @@ const authSlice = createSlice({
     },
     logoutUser: state => {
       removeTokens();
-
       window.location.reload();
     },
 

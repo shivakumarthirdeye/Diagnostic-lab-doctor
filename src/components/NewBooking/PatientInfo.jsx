@@ -29,7 +29,7 @@ const PatientInfo = ({
   const initialValues = patientValues || {
     firstName: '',
     lastName: '',
-    patientId: '',
+    pat_id: '',
     age: '',
     gender: '',
     mobileNumber: '',
@@ -42,7 +42,7 @@ const PatientInfo = ({
   const validationSchema = Yup.object({
     firstName: Yup.string().required('First Name is required'),
     lastName: Yup.string(),
-    patientId: Yup.string(),
+    pat_id: Yup.string(),
     age: Yup.string().required('Age is required'),
     gender: Yup.string().required('Gender is required'),
     mobileNumber: Yup.string().phone('IN', 'Please enter a valid phone number'),
@@ -87,8 +87,8 @@ const PatientInfo = ({
                 />
                 <Input
                   label='Patient ID'
-                  name='patientId'
-                  id='patientId'
+                  name='pat_id'
+                  id='pat_id'
                   placeholder='Enter ID'
                 />
 

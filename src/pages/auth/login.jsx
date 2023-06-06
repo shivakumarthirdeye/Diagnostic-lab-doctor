@@ -6,23 +6,8 @@ import { FiLock, FiUser } from 'react-icons/fi';
 import Checkbox from '../../components/common/Form/Checkbox';
 import { Link } from 'react-router-dom';
 import SubmitBtn from '../../components/common/Form/SubmitBtn';
-import axios from 'axios';
-import { SERVER_URL } from '../../utils/config';
-import { useMutation } from 'react-query';
-import { addToast } from '../../redux/features/toastSlice';
-import { ERROR, SUCCESS } from '../../utils/constant';
-import { handleError } from '../../utils/helper';
-import { useDispatch } from 'react-redux';
-import { loginUser, setCurrentUser } from '../../redux/features/authSlice';
-
-const login = async data => {
-  const res = await axios.post(`${SERVER_URL}/web-doctor-login`, data);
-  return res;
-};
 
 const Login = () => {
-  const dispatch = useDispatch();
-
   const initialValues = {
     email: '',
     password: '',
@@ -35,32 +20,6 @@ const Login = () => {
       .required('Email is required'),
     password: Yup.string().required('Password is required'),
     stayLoggedIn: Yup.boolean(),
-  });
-
-  const { mutate, data, isError, isLoading, error } = useMutation({
-    mutationFn: login,
-    onSuccess: success => {
-      dispatch(
-        addToast({
-          kind: SUCCESS,
-          msg: 'Login successful',
-        })
-      );
-
-      dispatch(loginUser({ accessToken: success.data.token }));
-
-      dispatch(setCurrentUser(success.data.doctor));
-    },
-    onError: error => {
-      const errorMsg = handleError(error);
-      console.log('🚀 ~ file: login.jsx:61 ~ Login ~ errorMsg:', errorMsg);
-      dispatch(
-        addToast({
-          kind: ERROR,
-          msg: errorMsg,
-        })
-      );
-    },
   });
 
   return (

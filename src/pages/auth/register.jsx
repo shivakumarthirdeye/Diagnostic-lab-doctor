@@ -4,14 +4,8 @@ import * as Yup from 'yup';
 import Input from '../../components/common/Form/Input';
 import SubmitBtn from '../../components/common/Form/SubmitBtn';
 import { Link, useNavigate } from 'react-router-dom';
-import { useMutation } from 'react-query';
 import axios from 'axios';
 import { SERVER_URL } from '../../utils/config';
-import { useDispatch } from 'react-redux';
-import { addToast } from '../../redux/features/toastSlice';
-import { ERROR, SUCCESS } from '../../utils/constant';
-import { handleError } from '../../utils/helper';
-import Loading from '../../components/Loading';
 
 const register = data => {
   const res = axios.post(`${SERVER_URL}/register-web-doctor`, data);
@@ -19,8 +13,6 @@ const register = data => {
 };
 
 const Register = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
   const initialValues = {
     fullName: '',
     phoneNumber: '',
@@ -48,37 +40,9 @@ const Register = () => {
 
   const formRef = useRef(null);
 
-  const { mutate, data, isError, isLoading, error } = useMutation({
-    mutationFn: register,
-    onSuccess: success => {
-      dispatch(
-        addToast({
-          kind: SUCCESS,
-          msg: success.data.message,
-        })
-      );
-
-      navigate('/auth/verify-otp', {
-        state: {
-          ...formRef.current.values,
-          ...success.data.doctor,
-        },
-      });
-    },
-    onError: error => {
-      const errorMsg = handleError(error);
-      dispatch(
-        addToast({
-          kind: ERROR,
-          msg: errorMsg,
-        })
-      );
-    },
-  });
-
   return (
     <>
-      {isLoading && <Loading />}
+      {/* {isLoading && <Loading />} */}
 
       <div className='min-h-screen  flex max-w-xl md:max-w-none mx-auto flex-col md:flex-row justify-center md:items-center md:justify-between relative  py-10 md:py-20'>
         <p className='absolute hidden md:block bottom-[20px] mb-2 text-sm left-[50%] translate-x-[-50%]'>
@@ -112,7 +76,7 @@ const Register = () => {
             initialValues={initialValues}
             validationSchema={validationSchema}
             onSubmit={values => {
-              mutate(values);
+              console.log(values);
             }}
           >
             <Form className='auth-form   max-w-2xl mt-4'>
