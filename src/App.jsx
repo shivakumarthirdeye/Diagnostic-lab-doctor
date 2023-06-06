@@ -2,11 +2,8 @@ import React from 'react';
 import AuthLayout from './layout/AuthLayout';
 import DefaultLayout from './layout/DefaultLayout';
 import PrivateRoute from './PrivateRoute';
-import { lazy, Suspense, useState } from 'react';
+import { lazy, Suspense } from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
-import Toasts from './components/Toast';
-import { ToastContainer, Flip } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import store from './redux/app/store';
 
@@ -32,8 +29,6 @@ axios.interceptors.request.use(
 const App = () => {
   return (
     <>
-      <Toasts />
-      <ToastContainer position='top-right' autoClose={3000} transition={Flip} />
       <BrowserRouter
         getUserConfirmation={(message, callback) => {
           // this is the default behavior

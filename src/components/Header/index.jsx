@@ -1,14 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { GiHamburgerMenu } from 'react-icons/gi';
-import { FaTimes } from 'react-icons/fa';
 import HeaderMobile from './HeaderMobile';
-import { Transition } from '@headlessui/react';
-import { MdLogout } from 'react-icons/md';
 import Sidebar from './Sidebar';
 import { useDispatch, useSelector } from 'react-redux';
 import useClose from '../../hooks/useClose';
-import { logoutUser } from '../../redux/features/authSlice';
 
 const navLinks = [
   {
@@ -32,7 +28,10 @@ const navLinks = [
 const Header = () => {
   const { pathname } = useLocation();
   const dispatch = useDispatch();
-  const { user } = useSelector(state => state.auth);
+
+  const user = {
+    fullName: 'Test User',
+  };
 
   const [showSidebar, setShowSidebar] = useState(false);
   const [showLogout, setShowLogout] = useState(false);
