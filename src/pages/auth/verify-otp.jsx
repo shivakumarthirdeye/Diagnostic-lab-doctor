@@ -1,25 +1,62 @@
+/* eslint-disable react/prop-types */
 import { Formik, Form } from 'formik';
 import Input from '../../components/common/Form/Input';
 import * as Yup from 'yup';
 import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import SubmitBtn from '../../components/common/Form/SubmitBtn';
 import { useDispatch } from 'react-redux';
+import axios from 'axios';
+import { SERVER_URL } from '../../utils/config';
+import { toast } from 'react-toastify';
 
-const VerifyOtp = () => {
-  const { state } = useLocation();
+const VerifyOtp = ({details}) => {
+  // const { state } = useLocation();
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
+  console.log('Verifying OTP',details)
+  const {email,
+    fullName,
+    phoneNumber,
+    city,
+    address,
+    password,
+    hospitalName}=details;
   const initialValues = {
     otp: '',
   };
 
   const validationSchema = Yup.object({
-    otp: Yup.number('OTP must be a number').required('OTP is required'),
+    otp: Yup.number().typeError('OTP must be a number').required('OTP is required'),
   });
+  
 
-  if (!state) {
-    return <Navigate replace to='/auth/login' />;
-  }
+  const handleSubmit = async (values) => {
+    const {
+      otp
+    } = values;
+
+    try {
+      const response = await axios.post(`${SERVER_URL}/verify-web-doctorotp`, {
+        email,
+        fullName,
+        phoneNumber,
+        city,
+        address,
+        password,
+        hospitalName,otp,
+      });
+      if(response.data.message==="OTP verified successfully"){
+         toast.success("OTP verified successfully")
+         navigate('/')
+      }else{
+        if(response.data.error==="Failed to verify OTP")
+        toast.error("Failed To  verify OTP")
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("Failed To  verify OTP ")
+    }
+  };
 
   return (
     <div className='py-20 md:h-screen flex max-w-xl md:max-w-none mx-auto flex-col md:flex-row justify-center md:items-center md:justify-between relative '>
@@ -47,12 +84,7 @@ const VerifyOtp = () => {
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
-          onSubmit={values => {
-            console.log(
-              '🚀 ~ file: verify-otp.jsx:58 ~ VerifyOtp ~ values:',
-              values
-            );
-          }}
+          onSubmit={handleSubmit}
         >
           <Form className='auth-form   max-w-2xl mt-4'>
             <Input placeholder='Enter OTP' name='otp' id='otp' type='number' />

@@ -1,11 +1,13 @@
 import { Formik, Form } from 'formik';
-import React from 'react';
+// import React from 'react';
 import Input from '../../components/common/Form/Input';
 import * as Yup from 'yup';
 import { FiLock, FiUser } from 'react-icons/fi';
 import Checkbox from '../../components/common/Form/Checkbox';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import SubmitBtn from '../../components/common/Form/SubmitBtn';
+import axios from 'axios';
+import { SERVER_URL } from '../../utils/config';
 
 const Login = () => {
   const initialValues = {
@@ -14,6 +16,8 @@ const Login = () => {
     stayLoggedIn: true,
   };
 
+  const navigate = useNavigate();
+
   const validationSchema = Yup.object({
     email: Yup.string()
       .email('Enter a valid Email')
@@ -21,6 +25,24 @@ const Login = () => {
     password: Yup.string().required('Password is required'),
     stayLoggedIn: Yup.boolean(),
   });
+
+  const handleSubmit = async (values) => {
+    const { email, password } = values; 
+  
+    try {
+      const response = await axios.post(`${SERVER_URL}/web-doctor-login`, {
+        email,
+        password,
+      });
+      if(response.data.token){
+        localStorage.setItem("access_token",response.data.token)
+        navigate('/all-test')
+      }
+    } catch (error) {
+      console.error(error); 
+    }
+  };
+  
 
   return (
     <div className='h-screen flex max-w-xl md:max-w-none mx-auto flex-col md:flex-row justify-center md:items-center md:justify-between relative '>
@@ -48,9 +70,7 @@ const Login = () => {
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
-          onSubmit={values => {
-            mutate(values);
-          }}
+          onSubmit={handleSubmit}
         >
           <Form className='auth-form  max-w-2xl mt-4'>
             <Input

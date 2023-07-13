@@ -14,6 +14,10 @@ const Sidebar = ({ user, navLinks, showSidebar, setShowSidebar, logout }) => {
     query: '(max-width: 768px)',
   });
 
+  const handleLogout = ()=>{
+    localStorage.removeItem('access_token')
+  }
+
   useEffect(() => {
     if (!isLap) setShowSidebar(false);
   }, [isLap]);
@@ -123,12 +127,12 @@ const Sidebar = ({ user, navLinks, showSidebar, setShowSidebar, logout }) => {
             })}
           </ul>
         </div>
-        <div className='px-8 fixed bottom-10  '>
+        <div className='px-8 fixed bottom-10'>
           <button onClick={logout} className='flex items-center space-x-4 '>
             <span className='h-9 w-9 bg-white rounded flex items-center justify-center'>
               <MdLogout className='text-primary text-xl' />
             </span>
-            <span>Logout</span>
+            <span onClick={handleLogout}>Logout</span>
           </button>
         </div>
       </Transition>

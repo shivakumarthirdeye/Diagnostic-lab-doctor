@@ -2,7 +2,7 @@ import React from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
 
 const AuthLayout = () => {
-  let accessToken = 'test';
+  let accessToken = null;
 
   if (accessToken) {
     return <Navigate to='/' replace={true} />;

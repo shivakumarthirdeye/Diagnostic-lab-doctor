@@ -52,7 +52,8 @@ const Header = () => {
 
   const ref = useClose(() => setShowLogout(false));
   const logout = () => {
-    dispatch(logoutUser());
+    // dispatch(logoutUser());
+    localStorage.removeItem('access_token')
   };
   return (
     <>
