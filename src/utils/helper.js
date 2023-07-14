@@ -213,3 +213,16 @@ export const statusColor = (status, opacity = 1) => {
 
   return colors[status];
 };
+
+
+export const  formatDate=(dateString)=> {
+  const options = { year: 'numeric', month: 'short', day: 'numeric' };
+  const date = new Date(dateString);
+  const formattedDate = date.toLocaleDateString('en-US', options);
+  
+  const hours = date.getHours();
+  const minutes = date.getMinutes();
+  const formattedTime = `${hours % 12 || 12}.${minutes.toString().padStart(2, '0')}${hours < 12 ? 'am' : 'pm'}`;
+  
+  return `${formattedDate} | ${formattedTime}`;
+}

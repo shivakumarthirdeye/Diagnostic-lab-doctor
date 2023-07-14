@@ -34,8 +34,10 @@ const Login = () => {
         email,
         password,
       });
-      if(response.data.token){
+      console.log("response",response);
+      if(response?.data?.token){
         localStorage.setItem("access_token",response.data.token)
+        localStorage.setItem("user_name",JSON.stringify(response.data.doctor.fullName))
         navigate('/all-test')
       }
     } catch (error) {

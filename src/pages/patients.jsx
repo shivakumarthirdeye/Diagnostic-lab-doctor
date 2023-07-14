@@ -11,6 +11,7 @@ import { useMediaQuery } from 'react-responsive';
 import { useNavigate } from 'react-router-dom/dist';
 import { SERVER_URL } from '../utils/config';
 import axios from 'axios';
+import { formatDate } from '../utils/helper';
 
 const Patients = () => {
   const navigate = useNavigate();
@@ -21,6 +22,29 @@ const Patients = () => {
   const isLap = useMediaQuery({
     query: '(max-width: 768px)',
   });
+
+  const [patience, setpatience] = useState();
+
+ 
+  
+  const TOKEN = localStorage.getItem('access_token');
+
+  const fetchsubCategory = async (e) => {
+    try {
+      const data = await axios.get(
+        `http://localhost:8000/api/getpatiencelist`,{
+          headers: { authtoken: `${TOKEN}` }
+        }
+      );
+      setpatience(data?.data?.patients);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  useEffect(() => {
+    fetchsubCategory();
+  }, []);
 
   useEffect(() => {
     if (!isLap) setOpenFilter(false);
@@ -127,16 +151,54 @@ const Patients = () => {
         </div>
       </div>
       {/* No Info */}
-      <div className='py-60 flex flex-col items-center justify-center'>
+      {!patience?<div className='py-60 flex flex-col items-center justify-center'>
         <div className='text-center mt-3'>
           <h1 className='text-lg  font-medium text-black-500 '>
-            No Patients Yet!
+            {patience?.length === 0 ? 'No Patients Yet!':<>{patience?.length}</>}
           </h1>
           <p className='text-[#B5B5C3] mt-1'>
             Book for a sample test now and get patient details
           </p>
         </div>
-      </div>
+      </div>:<>
+      {patience?.map((sub,i) => {
+            return (
+              <div className="flex flex-wrap" key={i}>
+                <div
+                  className=" mt-[114px] rounded-[21px] h-[140px] w-[260px] shadow-2xl"
+                  style={{
+                    boxShadow: "0px 12px 12px -12px rgba(0, 0, 0, 0.1), 12px 0px 12px -12px rgba(0, 0, 0, 0.1), -12px 0px 12px -12px rgba(0, 0, 0, 0.1)"
+                  }}
+                >
+                  <div className="flex flex-col">
+                    <p className="font-nunito-sans text-base leading-[22px] pt-6 pl-3">
+                      {sub.firstname} {sub.lastname}
+                    </p>
+                    <div className="flex flex-col">
+                    <p className="font-nunito-sans text-[12px] text-[#B5B5C3] leading-[14px] pt-2 pl-3">
+                      {sub?.subcategories.map((sub)=>sub.name)}
+                    </p>
+                    <p className="font-nunito-sans text-[12px] text-[#B5B5C3] leading-[14px] pt-2 pl-3">
+                      {formatDate(sub?.createdAt)}
+                    </p>
+                    </div>
+                  </div>
+                  <hr className="border-[#B5B5C3] border-t-1 mt-[18px] pl-[10px]" />
+                  <div className="flex w-full justify-between items-center">
+                    <div className="ml-2 mt-2">
+                      <p className="font-Roboto text-[16px] text-[#497BEA] leading-[22px]">
+                        ₹ {sub?.subcategories.map((sub)=>sub.Rate)}
+                      </p>
+                    </div>
+                    <div className="mr-2">
+                      <img src="./microscope.jpg" alt="lab" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+      </>}
 
       {openFilter && (
         <div

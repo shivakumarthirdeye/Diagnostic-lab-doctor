@@ -14,6 +14,8 @@ import { ADD_TEST_MODAL } from '../../utils/constant';
 import { showModal } from '../../redux/features/modalSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { addTest, removeTest } from '../../redux/features/newBooking';
+import axios from 'axios';
+import { useEffect } from 'react';
 
 const testsArray = [
   {
@@ -50,6 +52,42 @@ const Investigation = ({
     tests: '',
     pickupTime: new Date(),
   };
+
+  const [rows,setRows] = useState();
+  const [subcategory, setsubCategory] = useState();
+  console.log("subcategory",subcategory)
+
+  const TOKEN = localStorage.getItem("access_token");
+
+  const reportCategory = rows?.map((cat)=>cat)
+
+  const fetchTest = async (e) => {
+    try {
+      const data = await axios.get(`http://localhost:8000/api/gettestcategory`, {
+        headers: { authtoken: `${TOKEN}` },
+      });
+      setRows(data?.data?.testCategory);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const fetchsubCategory = async (e) => {
+    try {
+      const data = await axios.get(`http://localhost:8000/gettestsubcategory`, {
+        headers: { authtoken: `${TOKEN}` },
+      });
+      setsubCategory(data?.data?.subTestCategory);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  useEffect(()=>{
+    fetchTest();
+    fetchsubCategory();
+  },[])
+
 
   const validationSchema = Yup.object({
     reportCategory: Yup.string().required('Report Category Name is required'),
@@ -167,20 +205,7 @@ const Investigation = ({
                     name='reportCategory'
                     id='reportCategory'
                     placeholder='Select Report Category'
-                    options={[
-                      {
-                        label: 'Category Name 1',
-                        value: 'Category Name',
-                      },
-                      {
-                        label: 'Category Name 2',
-                        value: 'Category Name 2',
-                      },
-                      {
-                        label: 'Category Name 3',
-                        value: 'Category Name 3',
-                      },
-                    ]}
+                    options={rows}
                   />
                 </div>
                 <div className='hidden md:block flex-1'></div>
@@ -191,11 +216,11 @@ const Investigation = ({
                   setTestInfoValues={setTestInfoValues}
                 />
                 <div className='grid md:grid-cols-2 gap-5 '>
-                  {tests?.map(test => {
-                    const { name, id, shortName, price } = test;
+                  {subcategory?.map(test => {
+                    const { name, _id, shortName, Rate } = test;
                     return (
                       <div
-                        key={id}
+                        key={_id}
                         className='p-[14px] relative text-sm rounded-md border  border-[#F6AFAF]'
                       >
                         <h1 className='font-medium'>{name}</h1>
@@ -204,7 +229,7 @@ const Investigation = ({
                         </p>
                         <h2 className='text-[#497BEA] font-semibold'>
                           {' '}
-                          ₹{price}
+                          ₹{Rate}
                         </h2>
 
                         <button
@@ -220,7 +245,7 @@ const Investigation = ({
                             // });
                             setFieldValue('tests', [
                               ...testInfoValues?.tests.filter(
-                                obj => obj.id !== test.id
+                                obj => obj?.id !== test.id
                               ),
                             ]);
                           }}
@@ -233,7 +258,7 @@ const Investigation = ({
                   })}
                 </div>
                 <div className='text-sm flex py-3 pb-5 justify-between'>
-                  <h1>Selected count({testInfoValues?.tests.length})</h1>
+                  <h1>Selected count({testInfoValues?.tests?.length})</h1>
                   <h1>
                     Total amount:{' '}
                     <span className='font-bold '>

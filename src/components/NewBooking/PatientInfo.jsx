@@ -63,7 +63,7 @@ const PatientInfo = ({
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={values => {
-          setPatientValues(values);
+          setPatientValues(values);     
           setCurrentStep(2);
         }}
       >
@@ -166,7 +166,8 @@ const PatientInfo = ({
               <div className='my-5 xs:my-10 flex items-center justify-center space-x-4'>
                 <Link
                   to='/'
-                  className='py-3 hidden xs:block text-sm lg:text-base px-8 bg-[#C9C9C9] text-white rounded  font-semibold'
+                  className='py-3 hidden xs:block 
+                  text-sm lg:text-base px-8 bg-[#C9C9C9] text-white rounded  font-semibold'
                 >
                   Cancel
                 </Link>

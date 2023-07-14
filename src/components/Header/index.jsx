@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import HeaderMobile from './HeaderMobile';
 import Sidebar from './Sidebar';
@@ -10,7 +10,7 @@ const navLinks = [
   {
     id: 1,
     name: 'Bookings',
-    href: '/',
+    href: '/new-booking',
     links: ['/new-booking'],
   },
   {
@@ -28,9 +28,10 @@ const navLinks = [
 const Header = () => {
   const { pathname } = useLocation();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const user = {
-    fullName: 'Test User',
+    fullName: 'Test Use',
   };
 
   const [showSidebar, setShowSidebar] = useState(false);
@@ -53,7 +54,9 @@ const Header = () => {
   const ref = useClose(() => setShowLogout(false));
   const logout = () => {
     // dispatch(logoutUser());
+    localStorage.removeItem('access_token');
     localStorage.removeItem('access_token')
+    navigate('/')
   };
   return (
     <>
