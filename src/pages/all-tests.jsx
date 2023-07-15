@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { HiOutlineArrowSmLeft } from "react-icons/hi";
 import { useNavigate } from "react-router-dom/dist";
+import { API } from "../config";
 
 const AllTests = () => {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ const AllTests = () => {
   const fetchsubCategory = async (e) => {
     try {
       const data = await axios.get(
-        `http://localhost:8000/api/gettestsubcategory`
+        `${API}/gettestsubcategory`
       );
       setsubCategory(data?.data?.subTestCategory);
     } catch (e) {
@@ -47,9 +48,10 @@ const AllTests = () => {
           <p className="text-[#B5B5C3] mt-2">
             {!subcategory ? 'No test Yet!':<>{subcategory.length} {' '}test available</>}
           </p>
+          <div className="flex flex-wrap">
           {subcategory?.map((sub,i) => {
             return (
-              <div className="flex flex-wrap" key={i}>
+              <div className="flex flex-wrap m-5" key={i}>
                 <div
                   className="border-[2px] border-t-[#B82C3A] mt-[114px] rounded-bl-[21px] rounded-br-[21px] h-[140px] w-[260px] shadow-2xl"
                   style={{ boxShadow: "12px 12px 12px rgba(0, 0, 0, 0.1)" }}
@@ -77,6 +79,7 @@ const AllTests = () => {
               </div>
             );
           })}
+          </div>
         </div>
       </div>
     </div>

@@ -13,7 +13,6 @@ const VerifyOtp = ({details}) => {
   // const { state } = useLocation();
   const navigate = useNavigate();
   // const dispatch = useDispatch();
-  console.log('Verifying OTP',details)
   const {email,
     fullName,
     phoneNumber,

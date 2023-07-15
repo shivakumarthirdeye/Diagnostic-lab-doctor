@@ -68,7 +68,7 @@ const NewBooking = () => {
           </div>
           <div>
             <Link
-              to='/'
+              to='/patients'
               className='bg-primary py-2.5 text-sm px-4 rounded-[10px] text-white font-semibold'
             >
               Back to all

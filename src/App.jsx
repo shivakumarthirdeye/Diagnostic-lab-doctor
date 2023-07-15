@@ -13,6 +13,7 @@ const Register = lazy(() => import('./pages/auth/register'));
 const ForgotPassword = lazy(() => import('./pages/auth/forgot-password'));
 const ResetPassword = lazy(() => import('./pages/auth/reset-password'));
 const VerifyOtp = lazy(() => import('./pages/auth/verify-otp'));
+const AllTests = lazy(() => import('./pages/AllTest'));
 
 
 const App = () => {
@@ -41,7 +42,7 @@ const App = () => {
                 <PrivateRoute>
                   <DefaultLayout />
                   <Routes>
-                    <Route to="/all-test" element={<AllTest/>}/>
+                    <Route to="/patient/:id" element={<AllTests/>}/>
                   </Routes>
                 </PrivateRoute>
               }

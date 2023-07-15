@@ -55,7 +55,6 @@ const Investigation = ({
 
   const [rows,setRows] = useState();
   const [subcategory, setsubCategory] = useState();
-  console.log("subcategory",subcategory)
 
   const TOKEN = localStorage.getItem("access_token");
 
