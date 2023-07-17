@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import { SERVER_URL } from '../../utils/config';
 import { toast } from 'react-toastify';
+import { API } from '../../config';
 
 const VerifyOtp = ({details}) => {
   // const { state } = useLocation();
@@ -35,7 +36,7 @@ const VerifyOtp = ({details}) => {
     } = values;
 
     try {
-      const response = await axios.post(`${SERVER_URL}/verify-web-doctorotp`, {
+      const response = await axios.post(`${API}/verify-web-doctorotp`, {
         email,
         fullName,
         phoneNumber,

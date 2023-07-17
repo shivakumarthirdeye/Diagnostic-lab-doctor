@@ -7,6 +7,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { SERVER_URL } from '../../utils/config';
 import VerifyOtp from './verify-otp';
+import { API } from '../../config';
 
 
 const Register = () => {
@@ -51,7 +52,7 @@ const Register = () => {
     } = values;
 
     try {
-      const response = await axios.post(`${SERVER_URL}/register-web-doctor`, {
+      const response = await axios.post(`${API}/register-web-doctor`, {
         email,
         fullName,
         phoneNumber,
