@@ -50,14 +50,14 @@ const Payment = ({
             </div>
             <div className='text-sm xs:text-base'>
               {testInfoValues?.tests.map(test => {
-                const { id, name, price } = test;
+                const { id, name, Rate } = test;
                 return (
                   <div
                     key={id}
                     className='flex justify-between items-center pb-2.5'
                   >
                     <h1>{name}</h1>
-                    <p className='font-medium text-green'>INR. {price}</p>
+                    <p className='font-medium text-green'>INR. {Rate}</p>
                   </div>
                 );
               })}
@@ -72,7 +72,7 @@ const Payment = ({
             <p className='font-medium text-primary'>
               INR.{' '}
               {testInfoValues?.tests?.reduce((accumulator, currentValue) => {
-                return (accumulator = accumulator + currentValue.price);
+                return (accumulator = accumulator + currentValue.Rate);
               }, -100)}
             </p>
           </div>

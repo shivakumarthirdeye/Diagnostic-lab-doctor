@@ -33,6 +33,29 @@ export const tableStyles = makeStyles({
       color: "#B5B5C3",
     },
   },
+
+  selectInput:{
+    width : '350px',
+    height : '42px',
+    fontFamily: 'Poppins',
+    borderRadius: '4px',
+    border: '2px solid #c4c4c4',
+    marginTop: '9px',
+    marginBottom: '28px',
+    padding: '0 12px',
+    color: '#676767',
+    fontSize: '13px',
+    fontWeight: 400,
+    '&.MuiInput-underline:before':{
+         borderBottom: 0,
+         content: 'none',
+    },
+    '&.MuiInput-underline:after':{
+         borderBottom: 0,
+         content: 'none',
+    },
+   
+  },
   customTableCell: {
     borderBottom: "none",
     fontFamily: "Poppins",

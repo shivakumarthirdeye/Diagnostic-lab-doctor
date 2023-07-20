@@ -21,7 +21,7 @@ const Modal = ({ modalType, modalProps }) => {
 
   const handleClose = () => {
     if (modalProps?.onClose) {
-      navigate(modalProps?.onClose);
+      navigate('/patients');
     }
     dispatch(hideModal());
   };

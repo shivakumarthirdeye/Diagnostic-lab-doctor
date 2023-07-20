@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 import Select, { components } from 'react-select';
 import ErrorBox from './ErrorBox';
 
-const CustomSelect = ({
+const SelectTests = ({
   label,
   type,
   placeholder,
@@ -24,7 +24,9 @@ const CustomSelect = ({
   const onChange = ({ value }) => {
     setValue(value);
   };
+   
 
+  // const value = options?.map((m)=>m.name)
 
   
 
@@ -35,14 +37,14 @@ const CustomSelect = ({
       <label className={`${disabled && 'opacity-60'} text-sm block mb-2 text`}>
         {label}
       </label>
+      {console.log("CustomSelect===>" ,options)}
       <Select
         options={options}
         {...props}
         value={
           values[field.name] && {
             label:
-              values[field.name].charAt(0).toUpperCase() +
-              values[field.name].slice(1),
+              values[field.name],
             value: values[field.name],
           }
         }
@@ -97,4 +99,4 @@ const CustomSelect = ({
   );
 };
 
-export default CustomSelect;
+export default SelectTests;

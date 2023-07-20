@@ -96,7 +96,7 @@ const BookingSuccess = ({
             <h1 className='text-primary font-semibold'>
               INR.{' '}
               {testInfoValues?.tests?.reduce((accumulator, currentValue) => {
-                return (accumulator = accumulator + currentValue.price);
+                return (accumulator = accumulator + currentValue.Rate);
               }, -100)}
             </h1>
           </div>
