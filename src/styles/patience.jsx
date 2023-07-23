@@ -2,7 +2,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 export const tableStyles = makeStyles({
   root: {
-    background: "#f5f5f5", // Set your desired background color
+    background: "#f5f5f5", 
     paddingBottom: "3%",
     paddingTop: "3%",
     fontFamily: "Poppins",
@@ -16,12 +16,12 @@ export const tableStyles = makeStyles({
     },
   },
   tableHead: {
-    background: "#FAFAFA", // Set your desired background color
+    background: "#FAFAFA", 
     borderRadius: "6px",
     height: "43px",
     margingBottom: "20px",
     fontFamily: "Poppins",
-    borderRadius: "36px",
+    // borderRadius: "36px",
     "& .MuiTableHead-root": {
       width: "96%", // Set your desired width
       height: "43px", // Set your desired height
