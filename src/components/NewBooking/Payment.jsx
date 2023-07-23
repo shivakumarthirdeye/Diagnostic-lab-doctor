@@ -34,6 +34,8 @@ const Payment = ({
   const TOKEN = localStorage.getItem("access_token");
 
 
+
+
   const validationSchema = Yup.object({
     paymentMethod: Yup.string().required('Payment Method is required'),
   });

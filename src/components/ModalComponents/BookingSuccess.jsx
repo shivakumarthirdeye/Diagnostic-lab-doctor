@@ -7,10 +7,9 @@ const BookingSuccess = ({
   paymentInfo,
   patientValues,
 }) => {
-  console.log(
-    "file: BookingSuccess.jsxtestInfoValues:",
-    testInfoValues
-  );
+
+  
+  
   return (
     <div className='min-h-screen xs:min-h-fit py-[10vh] xs:h-auto p-5 xs:py-6 bg-white sm:w-[520px] rounded-xl '>
       <div className='flex justify-center'>

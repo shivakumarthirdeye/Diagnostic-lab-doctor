@@ -31,7 +31,7 @@ const Patients = () => {
   const [sortedData, setSortedData] = useState();
 
   const filteredData = patience?.filter((item) =>
-    item?.firstname?.toLowerCase().includes(searchQuery?.toLowerCase())
+    item?.firstName?.toLowerCase().includes(searchQuery?.toLowerCase())
   );
 
   const handleSortByDate = () => {
@@ -49,7 +49,7 @@ const Patients = () => {
   const fetchsubCategory = async (e) => {
     try {
       const data = await axios.get(
-        `${API}/getpatiencelist`,
+        `${API}/get-web-patience`,
         {
           headers: { authtoken: `${TOKEN}` },
         }
@@ -59,6 +59,8 @@ const Patients = () => {
       console.log(e);
     }
   };
+
+  console.log("patience",patience)
 
   useEffect(() => {
     fetchsubCategory();
@@ -213,14 +215,14 @@ const Patients = () => {
                 >
                   <div className="flex flex-col">
                     <p className="font-nunito-sans text-base leading-[22px] pt-6 pl-3">
-                      {sub.firstname} {sub.lastname}
+                      {sub.firstName} {sub.lastName}
                     </p>
                     <div className="flex flex-col">
                       <p className="font-nunito-sans text-[12px] text-[#B5B5C3] leading-[14px] pt-2 pl-3">
-                        {sub?.subcategories.map((sub) => sub.name)}
+                        {sub?.subcategories?.map((sub) => sub.name)}
                       </p>
                       <p className="font-nunito-sans text-[12px] text-[#B5B5C3] leading-[14px] pt-2 pl-3">
-                        {formatDate(sub?.createdAt)}
+                        {formatDate(sub?.pickupTime)}
                       </p>
                     </div>
                   </div>
@@ -228,7 +230,7 @@ const Patients = () => {
                   <div className="flex w-full justify-between items-center">
                     <div className="ml-2 mt-3">
                       <p className="font-Roboto text-[16px] text-[#497BEA] leading-[22px]">
-                        ₹ {sub?.subcategories.map((sub) => sub.Rate)}
+                        ₹ {sub?.amount}
                       </p>
                     </div>
                     <div className="mt-3 mr-5">

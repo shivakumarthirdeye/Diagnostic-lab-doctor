@@ -33,7 +33,8 @@ const Investigation = ({
   const [category, setRows] = useState();
   const TOKEN = localStorage.getItem("access_token");
 
-  {console.log("CustomSelec",category)}
+  // console.log("CustomSelec",testInfoValues.tests)
+  
   
   console.log("Investigation", tests);
   const initialValues = testInfoValues || {
@@ -345,6 +346,8 @@ function SelectTest({ testInfoValues, setTestInfoValues }) {
 
   const [searchValue, setSearchValue] = useState("");
 
+  console.log("searchValue",searchValue)
+
   return (
     <div
       className="my-4"
@@ -361,7 +364,9 @@ function SelectTest({ testInfoValues, setTestInfoValues }) {
             <>
               {open ? (
                 <input
-                  className="flex items-center justify-between w-full py-3 px-5 rounded-md border border-[#C9C9C9] text-sm focus:outline-none"
+                  className="flex items-center justify-between w-full 
+                  py-3 px-5 rounded-md border border-[#C9C9C9]
+                  text-sm focus:outline-none"
                   autoFocus={open}
                   value={searchValue}
                   onChange={(e) => {
@@ -371,7 +376,9 @@ function SelectTest({ testInfoValues, setTestInfoValues }) {
                   placeholder="Enter & search"
                 />
               ) : (
-                <Popover.Button className="flex items-center justify-between w-full py-3 px-5 rounded-md border border-[#C9C9C9] text-sm text-[#C9C9C9] focus:outline-none">
+                <Popover.Button className="flex items-center justify-between 
+                w-full py-3 px-5 rounded-md border border-[#C9C9C9]
+                text-sm text-[#C9C9C9] focus:outline-none">
                   <span>Enter & search</span>
                   <HiChevronDown aria-hidden="true" className="text-2xl" />
                 </Popover.Button>
@@ -422,14 +429,14 @@ function SelectTest({ testInfoValues, setTestInfoValues }) {
                                   .includes(searchValue.toLowerCase());
                               })
                               .map((test, personIdx) => {
-                                const { id, name, Rate, shortname } = test;
+                                const { _id, name, Rate, shortname } = test;
 
                                 return (
                                   <tr
                                     onClick={() => {
                                       handleClose(close, test);
                                     }}
-                                    key={id}
+                                    key={_id}
                                     className={`cursor-pointer bg-white text-[#464E5F] font-semibold relative`}
                                   >
                                     <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium  sm:pl-6">
