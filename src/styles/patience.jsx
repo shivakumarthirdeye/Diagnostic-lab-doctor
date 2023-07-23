@@ -473,10 +473,9 @@ export const tableStyles = makeStyles({
     height: "21px !important",
     left: "29.5px !important",
     top: "138.95px !important",
-
     fontFamily: "Poppins !important",
     fontStyle: "normal",
-    fontWeight: "500",
+    fontWeight: "bold",
     fontSize: "14px !important",
     lineHeight: "21px !important",
     /* identical to box height */
