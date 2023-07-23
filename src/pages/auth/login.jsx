@@ -8,6 +8,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import SubmitBtn from '../../components/common/Form/SubmitBtn';
 import axios from 'axios';
 import { SERVER_URL } from '../../utils/config';
+import { API } from '../../config';
 
 const Login = () => {
   const initialValues = {
@@ -30,7 +31,7 @@ const Login = () => {
     const { email, password } = values; 
   
     try {
-      const response = await axios.post(`${SERVER_URL}/web-doctor-login`, {
+      const response = await axios.post(`${API}/web-doctor-login`, {
         email,
         password,
       });

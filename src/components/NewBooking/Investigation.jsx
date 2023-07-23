@@ -20,6 +20,7 @@ import { addTest, removeTest } from "../../redux/features/newBooking";
 import axios from "axios";
 import { useEffect } from "react";
 import SelectTests from "../common/Form/SelectTests";
+import { API } from "../../config";
 
 const Investigation = ({
   currentStep,
@@ -29,10 +30,10 @@ const Investigation = ({
 }) => {
   const dispatch = useDispatch();
   const { tests } = useSelector((state) => state.newBooking);
-  const [subcat, setRows] = useState();
+  const [category, setRows] = useState();
   const TOKEN = localStorage.getItem("access_token");
 
-  {console.log("CustomSelec",subcat)}
+  {console.log("CustomSelec",category)}
   
   console.log("Investigation", tests);
   const initialValues = testInfoValues || {
@@ -45,7 +46,7 @@ const Investigation = ({
   const fetchTest = async (e) => {
     try {
       const data = await axios.get(
-        `http://localhost:8000/api/gettestcategory`,
+        `${API}/gettestcategory`,
         {
           headers: { authtoken: `${TOKEN}` },
         }
@@ -168,16 +169,7 @@ const Investigation = ({
                     name="reportCategory"
                     id="reportCategory"
                     placeholder="Select Report Category"
-                    options={[
-                      {
-                        label: "Urine",
-                        value: "urine",
-                      },
-                      {
-                        label: "Blood",
-                        value: "blood",
-                      },
-                    ]}
+                    options={{ label: category.map((m)=>m.name), value: category.map((m)=>m.name)}}
                   />
                 </div>
                 <div className="hidden md:block flex-1"></div>
@@ -305,7 +297,7 @@ function SelectTest({ testInfoValues, setTestInfoValues }) {
   const fetchsubCategory = async (e) => {
     try {
       const data = await axios.get(
-        `http://localhost:8000/api/gettestsubcategorys`,
+        `${API}/gettestsubcategorys`,
         {
           headers: { authtoken: `${TOKEN}` },
         }
