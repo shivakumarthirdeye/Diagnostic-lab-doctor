@@ -13,7 +13,7 @@ const AllTests = () => {
   const fetchsubCategory = async (e) => {
     try {
       const data = await axios.get(
-        `${API}/gettestsubcategory`
+        `${API}/gettestsubcategorys`
       );
       setsubCategory(data?.data?.subTestCategory);
     } catch (e) {

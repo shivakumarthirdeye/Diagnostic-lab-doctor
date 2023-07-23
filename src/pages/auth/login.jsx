@@ -39,7 +39,7 @@ const Login = () => {
       if(response?.data?.token){
         localStorage.setItem("access_token",response.data.token)
         localStorage.setItem("user_name",JSON.stringify(response.data.doctor.fullName))
-        navigate('/all-test')
+        navigate('/patients')
       }
     } catch (error) {
       console.error(error); 

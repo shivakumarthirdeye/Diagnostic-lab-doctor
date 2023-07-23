@@ -10,6 +10,9 @@ import { BOOKING_SUCCESS_MODAL } from '../../utils/constant';
 import { showModal } from '../../redux/features/modalSlice';
 import { useDispatch } from 'react-redux';
 import { clearTest } from '../../redux/features/newBooking';
+import axios from 'axios';
+import { API } from '../../config';
+import { toast } from 'react-toastify';
 
 const Payment = ({
   currentStep,
@@ -24,9 +27,56 @@ const Payment = ({
     paymentMethod: '',
   };
 
+ const amount =  testInfoValues?.tests?.reduce((accumulator, currentValue) => {
+    return (accumulator = accumulator + currentValue.Rate);
+  }, -100)
+
+  const TOKEN = localStorage.getItem("access_token");
+
+
   const validationSchema = Yup.object({
     paymentMethod: Yup.string().required('Payment Method is required'),
   });
+
+  const handleSubmit = async (values) => {  
+    try {
+      const response = await axios.post(`${API}/register-web-patience`, {
+        patientValues,
+        testInfoValues,amount,
+        paymentInfo: values
+      },{
+        headers: { authtoken: `${TOKEN}` }
+      });
+      console.log("response",response);
+      if(response.data.patients){
+        setShowConfirmMessage(false);
+        dispatch(clearTest());
+        dispatch(
+          showModal({
+            modalType: BOOKING_SUCCESS_MODAL,
+            modalProps: {
+              testInfoValues: {
+                ...testInfoValues,
+                pickupTime: new Date(
+                  testInfoValues.pickupTime
+                ).toISOString(),
+              },
+              patientValues,
+              paymentInfo: values,
+              onClose: '/',
+            },
+          })
+        );
+      }else{
+        if(response.data.errors){
+          toast.error("Patient already exists")
+        }
+      }
+    } catch (error) {
+      console.error(error); 
+      toast.error("Patient already exists")
+    }
+  };
   return (
     <div className='py-5'>
       <div className='flex flex-col items-center justify-center max-w-lg mx-auto'>
@@ -49,7 +99,7 @@ const Payment = ({
               <p className='font-medium'>Health at Home</p>
             </div>
             <div className='text-sm xs:text-base'>
-              {testInfoValues?.tests.map(test => {
+              {testInfoValues?.tests?.map(test => {
                 const { id, name, Rate } = test;
                 return (
                   <div
@@ -83,29 +133,7 @@ const Payment = ({
           <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
-            onSubmit={values => {
-              setShowConfirmMessage(false);
-              dispatch(clearTest());
-              dispatch(
-                showModal({
-                  modalType: BOOKING_SUCCESS_MODAL,
-                  modalProps: {
-                    testInfoValues: {
-                      ...testInfoValues,
-                      pickupTime: new Date(
-                        testInfoValues.pickupTime
-                      ).toISOString(),
-                    },
-                    patientValues,
-                    paymentInfo: values,
-                    onClose: '/',
-                  },
-                })
-              );
-
-              // setPatientValues(values);
-              // setCurrentStep(2);
-            }}
+            onSubmit={handleSubmit}
           >
             {formik => {
               const { values, setFieldValue, touched, errors } = formik;

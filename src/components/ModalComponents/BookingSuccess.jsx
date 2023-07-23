@@ -8,7 +8,7 @@ const BookingSuccess = ({
   patientValues,
 }) => {
   console.log(
-    '🚀 ~ file: BookingSuccess.jsx:10 ~ testInfoValues:',
+    "file: BookingSuccess.jsxtestInfoValues:",
     testInfoValues
   );
   return (

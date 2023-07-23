@@ -169,7 +169,16 @@ const Investigation = ({
                     name="reportCategory"
                     id="reportCategory"
                     placeholder="Select Report Category"
-                    options={{ label: category.map((m)=>m.name), value: category.map((m)=>m.name)}}
+                    options={[
+                      {
+                        label: "Urine",
+                        value: "urine",
+                      },
+                      {
+                        label: "Blood",
+                        value: "blood",
+                      },
+                    ]}
                   />
                 </div>
                 <div className="hidden md:block flex-1"></div>
@@ -407,8 +416,7 @@ function SelectTest({ testInfoValues, setTestInfoValues }) {
                             </tr>
                           </thead>
                           <tbody className="bg-white dark:bg-dark-500">
-                            {subcategory
-                              .filter((testItem) => {
+                            {subcategory?.filter((testItem) => {
                                 return testItem.name
                                   .toLowerCase()
                                   .includes(searchValue.toLowerCase());
