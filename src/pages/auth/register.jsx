@@ -162,7 +162,7 @@ const Register = () => {
                 <SubmitBtn text={otp?'Please Wait...':'Register'} className='bg-primary' />
                 <p className='text-center text-xs md:text-sm '>
                   Already Have an account?&nbsp;
-                  <Link className=' text-primary font-medium' to='/auth/login'>
+                  <Link className=' text-primary font-medium' to='/'>
                     Signin
                   </Link>{' '}
                 </p>
