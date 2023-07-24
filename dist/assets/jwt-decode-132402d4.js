@@ -1,0 +1,1 @@
+function o(r){this.message=r}o.prototype=new Error,o.prototype.name="InvalidCharacterError";typeof window<"u"&&window.atob&&window.atob.bind(window);function a(r){this.message=r}a.prototype=new Error,a.prototype.name="InvalidTokenError";
