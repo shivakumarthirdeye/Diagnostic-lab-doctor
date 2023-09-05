@@ -66,6 +66,11 @@ export default defineConfig({
       registerType: 'autoUpdate',
     }),
   ],
+resolve: {
+    alias: {
+      "./runtimeConfig": "./runtimeConfig.browser",
+    },
+},
   build: {
     // chunkSizeWarningLimit: 1500,
     rollupOptions: {
