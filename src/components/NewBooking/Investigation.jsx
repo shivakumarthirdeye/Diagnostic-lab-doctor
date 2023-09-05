@@ -33,10 +33,10 @@ const Investigation = ({
   const [category, setRows] = useState();
   const TOKEN = localStorage.getItem("access_token");
 
-  // console.log("CustomSelec",testInfoValues.tests)
   
   
-  console.log("Investigation", tests);
+  
+  console.log("Investigation", category);
   const initialValues = testInfoValues || {
     reportCategory: "",
     sample: "",
@@ -57,6 +57,11 @@ const Investigation = ({
       console.log(e);
     }
   };
+
+  const categoryOptions = category?.map((category) => ({
+    label: category.name, 
+    value: category._id, 
+  }))
 
   useEffect(()=>{
     fetchTest()
@@ -170,16 +175,7 @@ const Investigation = ({
                     name="reportCategory"
                     id="reportCategory"
                     placeholder="Select Report Category"
-                    options={[
-                      {
-                        label: "ASDEF",
-                        value: "ASDEF",
-                      },
-                      {
-                        label: "KISH",
-                        value: "KISH",
-                      },
-                    ]}
+                    options={categoryOptions}
                   />
                 </div>
                 <div className="hidden md:block flex-1"></div>

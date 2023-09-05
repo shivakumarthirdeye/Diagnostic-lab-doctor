@@ -37,15 +37,15 @@ const SelectTests = ({
       <label className={`${disabled && 'opacity-60'} text-sm block mb-2 text`}>
         {label}
       </label>
-      {console.log("CustomSelect===>" ,options)}
+      {console.log("CustomSelect===>" ,field.name,)}
       <Select
         options={options}
         {...props}
         value={
-          values[field.name] && {
+          values[field.value] && {
             label:
-              values[field.name],
-            value: values[field.name],
+              values[field.value],
+            value: values[field.value],
           }
         }
         onChange={onChange}
