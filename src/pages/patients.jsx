@@ -49,7 +49,14 @@ const Patients = () => {
           headers: { authtoken: `${TOKEN}` },
         }
       );
-      const sortedData = data?.data?.patients.sort((a, b) => {
+      const today = new Date();
+      const filteredData = data?.data?.patients.filter((patient) => {
+        const pickupTime = new Date(patient.pickupTime);
+        // Compare the pickupTime date to today's date (ignoring time)
+        return pickupTime.toDateString() !== today.toDateString();
+      });
+      const sortedData = filteredData.sort((a, b) => {
+        
         const dateA = new Date(a.pickupTime);
         const dateB = new Date(b.pickupTime);
         if(!date){
