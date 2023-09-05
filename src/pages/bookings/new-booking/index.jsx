@@ -57,7 +57,7 @@ const NewBooking = () => {
     <div>
       {' '}
       <BreadCrumb
-        paths={[{ id: 1, name: 'Booking List', to: '/' }]}
+        paths={[{ id: 1, name: 'Booking List', to: '/patients' },{ id: 2, name: 'Todays Booking List', to: '/todays-booking' }]}
         currentPage='New Booking Form'
       />
       <div className='mainContainer'>

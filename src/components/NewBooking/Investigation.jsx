@@ -84,7 +84,7 @@ const Investigation = ({
         Test information
       </h1>
       <p className="my-4 text-[#2B2B2B] text-xs">
-        Lorem Ipsum has been the industry's standard dummy text.
+        
       </p>
       <Formik
         initialValues={initialValues}

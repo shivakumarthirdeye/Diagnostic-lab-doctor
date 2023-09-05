@@ -62,14 +62,15 @@ const BookingSuccess = ({
           Booking is Successful
         </h1>
         <p className='text-[#999999] text-center text-sm my-2'>
-          Lorem Ipsum has been the industry's standard dummy text.
+          {/* Lorem Ipsum has been the industry's standard dummy text. */}
         </p>
         <div className='border mt-2 rounded-md border-[#F8F8F8] p-3 font-medium'>
           <div className='flex justify-between items-center text-sm mb-3.5'>
             <h2>Booking Date</h2>
             <h1>
               {format(
-                new Date(testInfoValues?.pickupTime),
+                // new Date(testInfoValues?.pickupTime),
+                new Date(),
                 'do MMM yyyy, h:mm aa'
               )}
             </h1>

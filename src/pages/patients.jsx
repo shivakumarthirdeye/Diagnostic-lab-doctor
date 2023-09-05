@@ -29,19 +29,14 @@ const Patients = () => {
 
   const [searchQuery, setSearchQuery] = useState("");
   const [sortedData, setSortedData] = useState();
+  const [date,SetDateFilter] = useState(false);
 
   const filteredData = patience?.filter((item) =>
     item?.firstName?.toLowerCase().includes(searchQuery?.toLowerCase())
   );
 
   const handleSortByDate = () => {
-    const copiedData = [...sortedData];
-    const sorted = copiedData.sort((a, b) => {
-      const dateA = new Date(a.createdAt);
-      const dateB = new Date(b.createdAt);
-      return dateA - dateB;
-    });
-    setSortedData(sorted);
+    SetDateFilter(!date)
   };
 
   const TOKEN = localStorage.getItem("access_token");
@@ -54,17 +49,28 @@ const Patients = () => {
           headers: { authtoken: `${TOKEN}` },
         }
       );
-      setpatience(data?.data?.patients);
+      const sortedData = data?.data?.patients.sort((a, b) => {
+        const dateA = new Date(a.pickupTime);
+        const dateB = new Date(b.pickupTime);
+        if(!date){
+          return dateB - dateA;  
+        }else{
+          return dateA - dateB; 
+        }
+        
+      });
+  
+      // setpatience(sortedData);
+      setpatience(sortedData);
     } catch (e) {
       console.log(e);
     }
   };
 
-  console.log("patience",patience)
 
   useEffect(() => {
     fetchsubCategory();
-  }, [searchQuery]);
+  }, [searchQuery,date]);
 
   useEffect(() => {
     setSortedData(patience);

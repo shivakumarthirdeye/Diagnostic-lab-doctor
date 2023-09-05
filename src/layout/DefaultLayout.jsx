@@ -17,6 +17,8 @@ const NewBooking = lazy(() => import('../pages/bookings/new-booking'));
 const Patients = lazy(() => import('../pages/patients'));
 const AllTests = lazy(() => import('../pages/all-tests'));
 const TestInfo = lazy(() => import('../pages/TestInfo'));
+const TodaysBooking = lazy(() => import('../pages/bookings/index'));
+
 
 const DefaultLayout = () => {
   const dispatch = useDispatch();
@@ -48,6 +50,7 @@ const DefaultLayout = () => {
             <Route path='/patients' element={<Patients />} />
             <Route path='/all-tests' element={<AllTests />} />
             <Route path='/patient/:id' element={<TestInfo />} />
+            <Route path='/todays-booking' element={<TodaysBooking />} />
           </Routes>
         </Suspense>
       </main>

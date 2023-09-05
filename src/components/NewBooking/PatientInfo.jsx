@@ -57,7 +57,7 @@ const PatientInfo = ({
       {/* <Prompt when={true} message='Are you sure you want to leave?' /> */}
       <h1 className='text-xl font-medium hidden xs:block'>Basic information</h1>
       <p className='pt-3 text-[#2B2B2B] text-xs'>
-        Lorem Ipsum has been the industry's standard dummy text.
+        
       </p>
       <Formik
         initialValues={initialValues}
@@ -68,7 +68,7 @@ const PatientInfo = ({
         }}
       >
         {formik => {
-          const { values, touched, errors } = formik;
+          const { values, touched, errors,resetForm } = formik;
 
           return (
             <Form className='form my-10'>
@@ -164,13 +164,14 @@ const PatientInfo = ({
                 </div>
               </div>
               <div className='my-5 xs:my-10 flex items-center justify-center space-x-4'>
-                <Link
-                  to='/'
+                <button
+                type='button'
+                onClick={()=>resetForm()}
                   className='py-3 hidden xs:block 
                   text-sm lg:text-base px-8 bg-[#C9C9C9] text-white rounded  font-semibold'
                 >
                   Cancel
-                </Link>
+                </button>
                 <SubmitBtn
                   text='Proceed'
                   className='py-4 xs:!py-3 !w-full  text-sm lg:text-base !px-8 bg-primary xs:max-w-[110px] rounded text-white font-semibold'

@@ -9,6 +9,7 @@ import SubmitBtn from '../../components/common/Form/SubmitBtn';
 import axios from 'axios';
 import { SERVER_URL } from '../../utils/config';
 import { API } from '../../config';
+import { toast } from "react-toastify";
 
 const Login = () => {
   const initialValues = {
@@ -39,10 +40,17 @@ const Login = () => {
       if(response?.data?.token){
         localStorage.setItem("access_token",response.data.token)
         localStorage.setItem("user_name",JSON.stringify(response.data.doctor.fullName))
-        navigate('/patients')
+        navigate('/todays-booking')
+      }else{
+        if(response?.data?.error==="Please register first"){
+          toast.error("Please register first")
+        }else{
+          toast("Please Enter Correct Password")
+        }
       }
     } catch (error) {
       console.error(error); 
+      toast.error("Please Register First")
     }
   };
   
