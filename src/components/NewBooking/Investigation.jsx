@@ -172,12 +172,12 @@ const Investigation = ({
                     placeholder="Select Report Category"
                     options={[
                       {
-                        label: "Urine",
-                        value: "urine",
+                        label: "ASDEF",
+                        value: "ASDEF",
                       },
                       {
-                        label: "Blood",
-                        value: "blood",
+                        label: "KISH",
+                        value: "KISH",
                       },
                     ]}
                   />
