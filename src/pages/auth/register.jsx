@@ -84,7 +84,7 @@ const Register = () => {
       {!otp?<div className='min-h-screen  flex max-w-xl md:max-w-none mx-auto flex-col md:flex-row justify-center md:items-center md:justify-between relative  py-10 md:py-20'>
         <p className='absolute hidden md:block bottom-[20px] mb-2 text-sm left-[50%] translate-x-[-50%]'>
           {' '}
-          Powered by <span className='font-medium'> Xyz Pvt. Ltd.</span>
+          Powered by <span className='font-medium'> Nagaliker Pvt. Ltd.</span>
         </p>
         <div className='md:flex-1 flex mb-10 md:mb-0 flex-col items-center md:block '>
           <span className='inline-block md:hidden bg-[#B82C3A]/[0.23] h-[45px] w-[45px] rounded'></span>{' '}
@@ -98,7 +98,7 @@ const Register = () => {
             </span>
             <p className='hidden md:block text-base text-right mt-6'>
               Welcome to{' '}
-              <span className='font-medium text-primary'>PathoPlus</span>
+              <span className='font-medium text-primary'>Nagaliker</span>
             </p>
           </h2>
         </div>
