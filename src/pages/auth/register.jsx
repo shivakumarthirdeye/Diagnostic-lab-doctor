@@ -94,7 +94,7 @@ const Register = () => {
               {' '}
             </span>{' '}
             <span className=' text-lg md:text-5xl xl:text-6xl inline md:block font-medium text-primary'>
-              PathoPlus
+              Nagaliker
             </span>
             <p className='hidden md:block text-base text-right mt-6'>
               Welcome to{' '}
